@@ -75,7 +75,24 @@ include('session.php');
                 <h2>Dự án</h2>
             </div>
             <div class="projects_content">
-                <div class="sub_content">
+                <?php
+                    $sql = "SELECT * FROM post ORDER BY id DESC LIMIT 8 OFFSET 0";
+                    $result = mysqli_query($db,$sql);
+                    if ($result->num_rows > 0) {
+                        while($row = $result->fetch_assoc()) {
+                          echo "<div class='sub_content'>
+                                <img src='./".$row['img']."' alt='house1' class='sub_picture'>
+                                <div class='sub_text'>
+                                    <span>Mùa xuân</span>
+                                </div>
+                                <div class='prices'>
+                                    <span>".(string)($row['cost']/1000000)."tr.VND</span>
+                                </div>
+                            </div>";
+                        }
+                    }
+                ?>
+                <!-- <div class="sub_content">
                     <img src="./img/nha1.jpg" alt="house1" class="sub_picture">
                     <div class="sub_text">
                         <span>Mùa xuân</span>
@@ -147,7 +164,7 @@ include('session.php');
                         <span>100tr.VND</span>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
         <div id="about">
             <div class="sub_title">
@@ -228,7 +245,7 @@ include('session.php');
                 <h2>Đăng nhập</h2>
             </div>
             <div class="modal-body">
-                <form action="/login.php" method="POST">
+                <form action="login.php" method="POST">
                     <input type="text" id="username" name="username" placeholder="Username" required>
                     <input type="password" id="password" name="password" placeholder="Password" required>
                     <div style="display: flex;justify-content: space-between;">

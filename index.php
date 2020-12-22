@@ -267,7 +267,7 @@ include('session.php');
             <div class="modal-body">
 
             </div>
-            <div class="modal-footer"><button class="signup-btn" onclick="logout.php">Đăng xuất</button></div>
+            <div class="modal-footer"><button class="signup-btn" onclick="window.location='logout.php';">Đăng xuất</button></div>
         </div>
     </div>
 

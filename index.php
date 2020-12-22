@@ -80,7 +80,7 @@ include('session.php');
                     $result = mysqli_query($db,$sql);
                     if ($result->num_rows > 0) {
                         while($row = $result->fetch_assoc()) {
-                          echo "<div class='sub_content'>
+                            echo "<div class='sub_content'>
                                 <img src='./".$row['img']."' alt='house1' class='sub_picture'>
                                 <div class='sub_text'>
                                     <span>Mùa xuân</span>

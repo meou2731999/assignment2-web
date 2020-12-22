@@ -20,9 +20,13 @@ include('session.php');
         <a href="#" class="home button">
             <b>INT</b> House Building
         </a>
-        <a href="#" id="myBtn" class="button" onclick="openModal()">
-            Đăng nhập
-        </a>
+        <?php
+        if (!isset($_SESSION['login_user'])) {
+            echo "<a href='#' id='myBtnMobile' class='button' onclick='openModal()'> Đăng nhập</a>";
+        } else {
+            echo "<a href='#' id='myBtnInfo' class='button' onclick='openModalInfo()'> Hello:" . $login_session . "</a>";
+        }
+        ?>
         <a href="#contact" class="button">
             Liên hệ
         </a>
@@ -53,9 +57,13 @@ include('session.php');
             <a href="#contact" class="button" onclick="myFunction()">
                 Liên hệ
             </a>
-            <a href="#" id="myBtnMobile" class="button" onclick="openModal()">
-                Đăng nhập
-            </a>
+            <?php
+            if (!isset($_SESSION['login_user'])) {
+                echo "<a href='#' id='myBtnMobile' class='button' onclick='openModal()'> Đăng nhập</a>";
+            } else {
+                echo "<a href='#' id='myBtnInfoMobile' class='button' onclick='openModalInfo()'> Hello:" . $login_session . "</a>";
+            }
+            ?>
         </div>
     </div>
     <div class=" main_content">
@@ -212,11 +220,6 @@ include('session.php');
         </div>
     </div>
     <div id="myModal" class="modal">
-        <?php
-        if (isset($_SESSION['login_user'])) {
-            echo "Welcome " . $login_session;
-        } ?>
-        <!-- Modal content -->
         <div class="modal-content">
             <div class="modal-header">
                 <div class="button" style="margin-top: 18px;">
@@ -225,7 +228,7 @@ include('session.php');
                 <h2>Đăng nhập</h2>
             </div>
             <div class="modal-body">
-                <form action="./login.php" method="POST">
+                <form action="/login.php" method="POST">
                     <input type="text" id="username" name="username" placeholder="Username" required>
                     <input type="password" id="password" name="password" placeholder="Password" required>
                     <div style="display: flex;justify-content: space-between;">
@@ -235,8 +238,22 @@ include('session.php');
                 </form>
             </div>
         </div>
-
     </div>
+    <div id="myModalInfo" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="button" style="margin-top: 18px;">
+                    <span class="close">&times;</span>
+                </div>
+                <h2>Thông tin</h2>
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer"><button class="signup-btn" onclick="logout.php">Đăng xuất</button></div>
+        </div>
+    </div>
+
     <script>
         function myFunction() {
             var x = document.getElementById("active_navbar");
@@ -281,6 +298,29 @@ include('session.php');
         window.onclick = function(event) {
             if (event.target == modal) {
                 modal.style.display = "none";
+            }
+        }
+        var modalInfo = document.getElementById("myModalInfo");
+
+        // Get the <span> element that closes the modalInfo
+        var spanInfo = document.getElementsByClassName("close")[1];
+
+        // When the user clicks the button, open the modalInfo 
+        openModalInfo = function() {
+            modalInfo.style.display = "block";
+            myFunction();
+        }
+
+
+        // When the user clicks on <span> (x), close the modalInfo
+        spanInfo.onclick = function() {
+            modalInfo.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modalInfo, close it
+        window.onclick = function(event) {
+            if (event.target == modalInfo) {
+                modalInfo.style.display = "none";
             }
         }
     </script>

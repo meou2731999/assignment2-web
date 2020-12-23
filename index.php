@@ -1,6 +1,8 @@
-<?php
-include('session.php');
-?>
+<div style="display: none;">
+    <?php
+    include('session.php');
+    ?>
+</div>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -159,7 +161,7 @@ include('session.php');
                     <div class="button" style="margin-top: 18px;">
                         <span class="close">&times;</span>
                     </div>
-                    <h2>Đăng nhập</h2>
+                    <h2 style="margin-top: 20px !important;">Đăng nhập</h2>
                 </div>
                 <div class="modal-body">
                     <form action="login.php" method="POST">
@@ -179,12 +181,13 @@ include('session.php');
                     <div class="button" style="margin-top: 18px;">
                         <span class="close">&times;</span>
                     </div>
-                    <h2>Thông tin</h2>
+                    <h2 style="margin-top: 20px !important;">Thông tin</h2>
                 </div>
                 <div class="modal-body">
                     <p>Tên đăng nhập: <b><?php echo $login_session; ?></b></p>
                     <p>Email: <b><?php echo $email; ?></b></p>
-                    <p>Ngày sinh: <b><?php echo "Thêm biến ngày sinh vào đây"; ?></b></p>
+                    <p>Ngày sinh: <b><?php echo $birthday; ?></b></p>
+                    <p>Giới tính: <b><?php echo $sex; ?></b></p>
                 </div>
                 <div class="modal-footer"><button class="signup-btn" onclick="window.location='logout.php';">Đăng xuất</button></div>
             </div>

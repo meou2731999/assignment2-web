@@ -259,13 +259,31 @@ include('session.php');
     <div id="myModalInfo" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <div class="button" style="margin-top: 18px;">
+                <div class="button" style="margin: 0px;">
                     <span class="close">&times;</span>
                 </div>
-                <h2>Thông tin</h2>
+                <h2 style="margin:0">Thông tin</h2>
             </div>
             <div class="modal-body">
-
+            <table>
+                <td rowspan="6">
+                    <img src="./img/team1.jpg" alt="" style="width: 200px;height:200px">
+                </td>
+                <td>
+                    <tr>
+                        <td><label><b>UserName  </b></label></td>
+                        <td> <span><?php echo $login_session; ?></span></td>
+                    </tr>
+                    <tr>
+                        <td><label><b>Mail </b> </label></td>
+                        <td> <span><?php echo $email; ?></span></td>
+                    </tr>
+                    <tr>
+                        <td><label><b>Birthday  </b></label></td>
+                        <td> <span><?php echo $birthday; ?></span></td>
+                    </tr>
+                </td>
+            </table>
             </div>
             <div class="modal-footer"><button class="signup-btn" onclick="window.location='logout.php';">Đăng xuất</button></div>
         </div>

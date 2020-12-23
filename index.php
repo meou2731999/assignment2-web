@@ -76,14 +76,14 @@ include('session.php');
             </div>
             <div class="projects_content">
                 <?php
-                    $sql = "SELECT * FROM post ORDER BY id DESC LIMIT 8 OFFSET 0";
+                    $sql = "SELECT * FROM post ORDER BY id LIMIT 8 OFFSET 0";
                     $result = mysqli_query($db,$sql);
                     if ($result->num_rows > 0) {
                         while($row = $result->fetch_assoc()) {
                             echo "<div class='sub_content'>
                                 <img src='./".$row['img']."' alt='house1' class='sub_picture'>
                                 <div class='sub_text'>
-                                    <span>Mùa xuân</span>
+                                    <span>".$row['category']."</span>
                                 </div>
                                 <div class='prices'>
                                     <span>".(string)($row['cost']/1000000)."tr.VND</span>
@@ -92,79 +92,6 @@ include('session.php');
                         }
                     }
                 ?>
-                <!-- <div class="sub_content">
-                    <img src="./img/nha1.jpg" alt="house1" class="sub_picture">
-                    <div class="sub_text">
-                        <span>Mùa xuân</span>
-                    </div>
-                    <div class="prices">
-                        <span>100tr.VND</span>
-                    </div>
-                </div>
-                <div class="sub_content">
-                    <img src="./img/nha2.jpg" alt="house1" class="sub_picture">
-                    <div class="sub_text">
-                        <span>Mùa hè</span>
-                    </div>
-                    <div class="prices">
-                        <span>100tr.VND</span>
-                    </div>
-                </div>
-                <div class="sub_content">
-                    <img src="./img/nha3.jpg" alt="house1" class="sub_picture">
-                    <div class="sub_text">
-                        <span>Mùa thu</span>
-                    </div>
-                    <div class="prices">
-                        <span>100tr.VND</span>
-                    </div>
-                </div>
-                <div class="sub_content">
-                    <img src="./img/nha4.jpg" alt="house1" class="sub_picture">
-                    <div class="sub_text">
-                        <span>Mùa đông</span>
-                    </div>
-                    <div class="prices">
-                        <span>100tr.VND</span>
-                    </div>
-                </div>
-                <div class="sub_content">
-                    <img src="./img/nha5.jpg" alt="house1" class="sub_picture">
-                    <div class="sub_text">
-                        <span>Châu á</span>
-                    </div>
-                    <div class="prices">
-                        <span>100tr.VND</span>
-                    </div>
-                </div>
-                <div class="sub_content">
-                    <img src="./img/nha6.jpg" alt="house1" class="sub_picture">
-                    <div class="sub_text">
-                        <span>Châu mỹ</span>
-                    </div>
-                    <div class="prices">
-                        <span>100tr.VND</span>
-                    </div>
-                </div>
-                <div class="sub_content">
-                    <img src="./img/nha7.jpg" alt="house1" class="sub_picture">
-                    <div class="sub_text">
-                        <span>Châu âu</span>
-                    </div>
-                    <div class="prices">
-                        <span>100tr.VND</span>
-                    </div>
-                </div>
-                <div class="sub_content">
-                    <img src="./img/nha8.jpg" alt="house1" class="sub_picture">
-                    <div class="sub_text">
-                        <span>Châu đại dương</span>
-                    </div>
-                    <div class="prices">
-                        <span>100tr.VND</span>
-                    </div>
-                </div>
-            </div> -->
         </div>
         <div id="about">
             <div class="sub_title">
@@ -187,30 +114,20 @@ include('session.php');
                     thật sự đáp ứng – thoả mãn được nhu cầu thực tế.</p>
             </div>
             <div class="projects_content">
-                <div class="sub_content">
-                    <img src="./img/team1.jpg" alt="team1" class="sub_picture">
-                    <h3>Nguyễn Tâm Đức</h3>
-                    <h4>CEO & Founder</h4>
-                    <a href="mailto:abc@example.com" class="button about">Liên hệ</a>
-                </div>
-                <div class="sub_content">
-                    <img src="./img/team2.jfif" alt="team2" class="sub_picture">
-                    <h3>Lê Xuân Bắc</h3>
-                    <h4>Kiến trúc sư</h4>
-                    <a href="mailto:abc@example.com" class="button about">Liên hệ</a>
-                </div>
-                <div class="sub_content">
-                    <img src="./img/team3.jpg" alt="team3" class="sub_picture">
-                    <h3>Robert Pattinson</h3>
-                    <h4>Kiến trúc sư</h4>
-                    <a href="mailto:abc@example.com" class="button about">Liên hệ</a>
-                </div>
-                <div class="sub_content">
-                    <img src="./img/team4.jfif" alt="team4" class="sub_picture">
-                    <h3>Chiba Takeru</h3>
-                    <h4>Kiến trúc sư</h4>
-                    <a href="mailto:abc@example.com" class="button about">Liên hệ</a>
-                </div>
+                <?php
+                    $sql = "SELECT * FROM employee ORDER BY id  LIMIT 4 OFFSET 0";
+                    $result = mysqli_query($db,$sql);
+                    if ($result->num_rows > 0) {
+                        while($row = $result->fetch_assoc()) {
+                            echo "<div class='sub_content'>
+                            <img src='./".$row['img']."' alt='team1' class='sub_picture'>
+                            <h3>".$row['name']."</h3>
+                            <h4>".$row['position']."</h4>
+                            <a href='mailto:".$row['email']."' class='button about'>Liên hệ</a>
+                            </div>";
+                        }
+                    }
+                ?>
 
             </div>
         </div>

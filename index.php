@@ -264,7 +264,7 @@
             }
         </script>
 
-        <footer>
+        <footer style="width: 100%;">
             <div class="footer">Copyright © 2020 Powered by <a style="color: gray; text-decoration: none; margin-left: 5px;" href="#" target="_blank">Bach Khoa
                     University</a>
             </div>

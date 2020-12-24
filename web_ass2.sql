@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 23, 2020 lúc 03:01 AM
+-- Thời gian đã tạo: Th12 24, 2020 lúc 04:40 AM
 -- Phiên bản máy phục vụ: 10.1.38-MariaDB
 -- Phiên bản PHP: 7.3.3
 
@@ -41,10 +41,10 @@ CREATE TABLE `employee` (
 --
 
 INSERT INTO `employee` (`id`, `name`, `position`, `email`, `img`) VALUES
-(1, 'Nguyễn Tâm Đức', 'CEO & Founder', 'cong.pham1999@hhcmut.edu.vn', 'img/team1.jpg'),
-(2, 'Lê Xuân Bắc', 'Kiến trúc sư\r\n', 'cong.pham1999@hhcmut.edu.vn', 'img/team2.jfif'),
+(1, 'Sett Williams', 'CEO & Founder', 'cong.pham1999@hhcmut.edu.vn', 'img/team1.jpg'),
+(2, 'George Wilson', 'Kiến trúc sư\r\n', 'cong.pham1999@hhcmut.edu.vn', 'img/team2.jpg'),
 (3, 'Robert Pattinson', 'Kiến trúc sư\r\n', 'cong.pham1999@hhcmut.edu.vn', 'img/team3.jpg'),
-(4, 'Chiba Takeru', 'Kiến trúc sư\r\n', 'cong.pham1999@hhcmut.edu.vn', 'img/team4.jfif');
+(4, 'Noah Roberts', 'Kiến trúc sư\r\n', 'cong.pham1999@hhcmut.edu.vn', 'img/team4.jpg');
 
 -- --------------------------------------------------------
 
@@ -91,18 +91,18 @@ CREATE TABLE `user` (
   `username` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(80) COLLATE utf8_unicode_ci NOT NULL,
-  `birdthday` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `birthday` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `role` int(11) NOT NULL,
   `avatar` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `phone` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
-  `sex` varchar(30) COLLATE utf8_unicode_ci NOT NULL
+  `gender` varchar(30) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `user`
 --
 
-INSERT INTO `user` (`id`, `username`, `password`, `email`, `birdthday`, `role`, `avatar`, `phone`, `sex`) VALUES
+INSERT INTO `user` (`id`, `username`, `password`, `email`, `birthday`, `role`, `avatar`, `phone`, `gender`) VALUES
 (6, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin@gmail.com', '30/04/1999', 0, 'img/unnamed.png', '+8498192764', 'male'),
 (7, 'user1', '25d55ad283aa400af464c76d713c07ad', 'user1@gmail.com', '30/04/1999', 1, 'img/unnamed.png', '034343439', 'female'),
 (8, 'user2', '25d55ad283aa400af464c76d713c07ad', 'user2@gmail.com', '30/04/1999', 1, 'img/unnamed.png', '0948332334', 'female'),

@@ -10,7 +10,7 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Int House Building</title>
+    <title>Int House Building - Homepage</title>
     <link rel="icon" href="./img/logo.ico" sizes="32x32" />
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;800&display=swap" rel="stylesheet">

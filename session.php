@@ -12,6 +12,7 @@ $row = mysqli_fetch_array($ses_sql, MYSQLI_ASSOC);
 if (isset($_SESSION['login_user'])) {
    $login_session = $row['username'];
    $email = $row['email'];
-   $birthday = $row['birthday'];
+   $birthday = $row['birdthday'];
+   $sex = $row['sex'];
    // header("location:index.php");
 }

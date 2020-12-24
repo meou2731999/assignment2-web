@@ -185,25 +185,36 @@
                 <h2 style="margin:0">Thông tin</h2>
             </div>
             <div class="modal-body">
-            <table>
-                <td rowspan="6">
-                    <img src="./img/team1.jpg" alt="" style="width: 200px;height:200px">
-                </td>
-                <td>
-                    <tr>
-                        <td><label><b>UserName  </b></label></td>
-                        <td> <span><?php echo $login_session; ?></span></td>
-                    </tr>
-                    <tr>
-                        <td><label><b>Mail </b> </label></td>
-                        <td> <span><?php echo $email; ?></span></td>
-                    </tr>
-                    <tr>
-                        <td><label><b>Birthday  </b></label></td>
-                        <td> <span><?php echo $birthday; ?></span></td>
-                    </tr>
-                </td>
-            </table>
+                <table>
+                    <td rowspan="6" style="padding-right: 15px">
+                    <?php echo "<img src='./img/".$avatar."'; style='width: 200px;height:200px; border:1px; border-style:inset'>"?>
+                    </td>
+                    <td>
+                        <tr>
+                            <td><label><b>UserName  </b></label></td>
+                            <td> <span><?php echo $login_session; ?></span></td>
+                        </tr>
+                        <tr>
+                            <td><label><b>Mail </b> </label></td>
+                            <td> <span><?php echo $email; ?></span></td>
+                        </tr>
+                        <tr>
+                            <td><label><b>Birthday  </b></label></td>
+                            <td> <span><?php echo $birthday; ?></span></td>
+                        </tr>
+                        <tr>
+                            <td><label><b>Phone number</b></label></td>
+                            <td> <span><?php echo $phone; ?></span></td>
+                        </tr>
+                        <tr>
+                            <td><label><b>Gender</b></label></td>
+                            <td> <span><?php echo $gender; ?></span></td>
+                        </tr>
+                    </td>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button class="signup-btn" onclick="window.location='logout.php';">Đăng xuất</button></div>
             </div>
         </div>
 

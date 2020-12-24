@@ -13,6 +13,8 @@ if (isset($_SESSION['login_user'])) {
    $login_session = $row['username'];
    $email = $row['email'];
    $birthday = $row['birdthday'];
-   $sex = $row['sex'];
+   $gender = $row['gender'];
+   $phone = $row['phone'];
+   $avatar = $row['avatar'];
    // header("location:index.php");
 }

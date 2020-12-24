@@ -19,7 +19,7 @@
 
 <body>
     <div id="navbar">
-        <a href="#" class="home button">
+        <a href="index.php" class="home button">
             <b>INT</b> House Building
         </a>
         <?php
@@ -41,7 +41,7 @@
     </div>
     <div id="navbar_mobile">
         <div id="unactive_navbar">
-            <a href="#" class="home button" onclick="myFunctionForHome()">
+            <a href="index.php" class="home button" onclick="myFunctionForHome()">
                 <b>INT</b> Building
             </a>
             <a href="javascript:void(0);" class="button" onclick="myFunction()">
@@ -82,7 +82,7 @@
                 $result = mysqli_query($db, $sql);
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
-                        echo "<div class='sub_content'>
+                        echo "<div class='sub_content' onclick='viewDetail(" . $row['id'] . ")'>
                                 <img src='./img/" . $row['img'] . "' alt='house1' class='sub_picture'>
                                 <div class='sub_text'>
                                     <span>" . $row['category'] . "</span>
@@ -291,6 +291,11 @@
             if (event.target == modalInfo) {
                 modalInfo.style.display = "none";
             }
+        }
+
+        function viewDetail(id) {
+            var path = "product.php?id=" + id.toString();
+            window.location = path;
         }
     </script>
 

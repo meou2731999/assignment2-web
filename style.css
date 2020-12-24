@@ -138,6 +138,7 @@ p {
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
+    cursor: pointer;
 }
 
 @media only screen and (max-width: 1300px) {

@@ -82,8 +82,8 @@
                 $result = mysqli_query($db, $sql);
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
-                        echo "<div class='sub_content' onclick='viewDetail(".$row['id'].");'>
-                                <img src='./" . $row['img'] . "' alt='house1' class='sub_picture'>
+                        echo "<div class='sub_content'>
+                                <img src='./img/" . $row['img'] . "' alt='house1' class='sub_picture'>
                                 <div class='sub_text'>
                                     <span>" . $row['category'] . "</span>
                                 </div>
@@ -122,7 +122,7 @@
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) {
                             echo "<div class='sub_content'>
-                            <img src='./" . $row['img'] . "' alt='team1' class='sub_picture about' style='height:300px; object-fit: none;        object-position: center;' >
+                            <img src='./img/" . $row['img'] . "' alt='team1' class='sub_picture about' style='height:300px; object-fit: none;        object-position: center;' >
                             <h3>" . $row['name'] . "</h3>
                             <h4>" . $row['position'] . "</h4>
                             <a href='mailto:" . $row['email'] . "' class='button about'>Liên hệ</a>
@@ -240,7 +240,7 @@
                     x.style.height = "0px";
                 }
             }
-            // Get the modal
+            // Get the modalgit 
             var modal = document.getElementById("myModal");
 
             // Get the <span> element that closes the modal

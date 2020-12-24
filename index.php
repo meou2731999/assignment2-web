@@ -83,7 +83,7 @@
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
                         echo "<div class='sub_content'>
-                                <img src='./" . $row['img'] . "' alt='house1' class='sub_picture'>
+                                <img src='./img/" . $row['img'] . "' alt='house1' class='sub_picture'>
                                 <div class='sub_text'>
                                     <span>" . $row['category'] . "</span>
                                 </div>
@@ -122,7 +122,7 @@
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) {
                             echo "<div class='sub_content'>
-                            <img src='./" . $row['img'] . "' alt='team1' class='sub_picture about' style='height:300px; object-fit: none;        object-position: center;' >
+                            <img src='./img/" . $row['img'] . "' alt='team1' class='sub_picture about' style='height:300px; object-fit: none;        object-position: center;' >
                             <h3>" . $row['name'] . "</h3>
                             <h4>" . $row['position'] . "</h4>
                             <a href='mailto:" . $row['email'] . "' class='button about'>Liên hệ</a>

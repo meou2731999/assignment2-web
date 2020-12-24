@@ -82,7 +82,7 @@
                 $result = mysqli_query($db, $sql);
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
-                        echo "<div class='sub_content'>
+                        echo "<div class='sub_content' onclick='viewDetail(".$row['id'].");'>
                                 <img src='./" . $row['img'] . "' alt='house1' class='sub_picture'>
                                 <div class='sub_text'>
                                     <span>" . $row['category'] . "</span>
@@ -165,8 +165,8 @@
                 </div>
                 <div class="modal-body">
                     <form action="login.php" method="POST">
-                        <input type="text" id="username" name="username" placeholder="Username" required>
-                        <input type="password" id="password" name="password" placeholder="Password" required>
+                        <input type="text" id="username" name="username" placeholder="Username" required minlength="5">
+                        <input type="password" id="password" name="password" placeholder="Password" required minlength="5">
                         <div style="display: flex;justify-content: space-between;">
                             <input type="submit" value="Đăng nhập">
                             <div class="signup-btn">Đăng ký</div>
@@ -287,8 +287,11 @@
                     modalInfo.style.display = "none";
                 }
             }
+            function viewDetail(id){
+                var path="product.php?id="+id.toString();
+                window.location=path;
+            }
         </script>
-
         <footer style="width: 100%;">
             <div class="footer">Copyright © 2020 Powered by <a style="color: gray; text-decoration: none; margin-left: 5px;" href="#" target="_blank">Bach Khoa
                     University</a>

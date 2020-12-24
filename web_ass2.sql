@@ -90,7 +90,7 @@ CREATE TABLE `user` (
   `username` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(80) COLLATE utf8_unicode_ci NOT NULL,
-  `birdthday` date NOT NULL DEFAULT current_timestamp(),
+  `birthday` date NOT NULL,
   `role` int(11) NOT NULL,
   `avatar` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
   `phone` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
@@ -101,7 +101,7 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `username`, `password`, `email`, `birdthday`, `role`, `avatar`, `phone`, `gender`) VALUES
+INSERT INTO `user` (`id`, `username`, `password`, `email`, `birthday`, `role`, `avatar`, `phone`, `gender`) VALUES
 (1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin@gmail.com', '2018-08-16', 1, 'unnamed.png', '0964410362', 'none'),
 (2, 'user1', '25d55ad283aa400af464c76d713c07ad', 'user1@gmail.com', '2020-12-03', 0, 'user1.png', '0325482639', 'male'),
 (3, 'user2', '25d55ad283aa400af464c76d713c07ad', 'user2gmail.com', '2020-12-11', 0, 'user2.png', '0256461116', 'femaile'),

@@ -155,24 +155,25 @@
                 </div>
             </div>
         </div>
-        <div id="myModal" class="modal">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <div class="button" style="margin-top: 18px;">
-                        <span class="close">&times;</span>
+
+    </div>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="button" style="margin-top: 18px;">
+                    <span class="close">&times;</span>
+                </div>
+                <h2 style="margin-top: 20px !important;">Đăng nhập</h2>
+            </div>
+            <div class="modal-body">
+                <form action="login.php" method="POST" style="width: 100%;">
+                    <input type="text" id="username" name="username" placeholder="Username" required>
+                    <input type="password" id="password" name="password" placeholder="Password" required>
+                    <div style="display: flex;justify-content: space-between;">
+                        <input type="submit" value="Đăng nhập">
+                        <div class="signup-btn">Đăng ký</div>
                     </div>
-                    <h2 style="margin-top: 20px !important;">Đăng nhập</h2>
-                </div>
-                <div class="modal-body">
-                    <form action="login.php" method="POST">
-                        <input type="text" id="username" name="username" placeholder="Username" required>
-                        <input type="password" id="password" name="password" placeholder="Password" required>
-                        <div style="display: flex;justify-content: space-between;">
-                            <input type="submit" value="Đăng nhập">
-                            <div class="signup-btn">Đăng ký</div>
-                        </div>
-                    </form>
-                </div>
+                </form>
             </div>
         </div>
     </div>
@@ -185,13 +186,13 @@
                 <h2 style="margin:0">Thông tin</h2>
             </div>
             <div class="modal-body">
-                <table>
-                    <td rowspan="6" style="padding-right: 15px">
-                    <?php echo "<img src='./img/".$avatar."'; style='width: 200px;height:200px; border:1px; border-style:inset'>"?>
-                    </td>
+                <div class="modal-left">
+                    <?php echo "<img src='./img/" . $avatar . "'; style='width: 100%;height:auto;'>" ?>
+                </div>
+                <table class="modal-right">
                     <td>
                         <tr>
-                            <td><label><b>UserName  </b></label></td>
+                            <td><label><b>UserName </b></label></td>
                             <td> <span><?php echo $login_session; ?></span></td>
                         </tr>
                         <tr>
@@ -199,7 +200,7 @@
                             <td> <span><?php echo $email; ?></span></td>
                         </tr>
                         <tr>
-                            <td><label><b>Birthday  </b></label></td>
+                            <td><label><b>Birthday </b></label></td>
                             <td> <span><?php echo $birthday; ?></span></td>
                         </tr>
                         <tr>
@@ -213,87 +214,91 @@
                     </td>
                 </table>
             </div>
-            <div class="modal-footer">
-                <button class="signup-btn" onclick="window.location='logout.php';">Đăng xuất</button></div>
+            <div class=" modal-footer" style="text-align: center;">
+                <button class="signup-btn" onclick="window.location='logout.php';">Đăng xuất</button>
             </div>
         </div>
+    </div>
 
-        <script>
-            function myFunction() {
-                var x = document.getElementById("active_navbar");
-                if (x.style.height === "196px") {
-                    document.getElementById("fa-bars").style.display = "unset";
-                    document.getElementById("fa-times").style.display = "none";
-                    x.style.height = "0px";
-                } else {
-                    x.style.height = "196px";
-                    document.getElementById("fa-bars").style.display = "none";
-                    document.getElementById("fa-times").style.display = "unset";
-                }
+    <script>
+        function myFunction() {
+            var x = document.getElementById("active_navbar");
+            if (x.style.height === "196px") {
+                document.getElementById("fa-bars").style.display = "unset";
+                document.getElementById("fa-times").style.display = "none";
+                x.style.height = "0px";
+            } else {
+                x.style.height = "196px";
+                document.getElementById("fa-bars").style.display = "none";
+                document.getElementById("fa-times").style.display = "unset";
             }
+        }
 
-            function myFunctionForHome() {
-                var x = document.getElementById("active_navbar");
-                if (x.style.height === "196px") {
-                    document.getElementById("fa-bars").style.display = "unset";
-                    document.getElementById("fa-times").style.display = "none";
-                    x.style.height = "0px";
-                }
+        function myFunctionForHome() {
+            var x = document.getElementById("active_navbar");
+            if (x.style.height === "196px") {
+                document.getElementById("fa-bars").style.display = "unset";
+                document.getElementById("fa-times").style.display = "none";
+                x.style.height = "0px";
             }
-            // Get the modal
-            var modal = document.getElementById("myModal");
+        }
+        // Get the modal
+        var modal = document.getElementById("myModal");
 
-            // Get the <span> element that closes the modal
-            var span = document.getElementsByClassName("close")[0];
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
 
-            // When the user clicks the button, open the modal 
-            openModal = function() {
-                modal.style.display = "block";
+        // When the user clicks the button, open the modal 
+        openModal = function() {
+            modal.style.display = "block";
+            var x = document.getElementById("active_navbar");
+            if (x.style.height === "196px") {
                 myFunction();
             }
+        }
 
 
-            // When the user clicks on <span> (x), close the modal
-            span.onclick = function() {
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
                 modal.style.display = "none";
             }
+        }
+        var modalInfo = document.getElementById("myModalInfo");
 
-            // When the user clicks anywhere outside of the modal, close it
-            window.onclick = function(event) {
-                if (event.target == modal) {
-                    modal.style.display = "none";
-                }
-            }
-            var modalInfo = document.getElementById("myModalInfo");
+        // Get the <span> element that closes the modalInfo
+        var spanInfo = document.getElementsByClassName("close")[1];
 
-            // Get the <span> element that closes the modalInfo
-            var spanInfo = document.getElementsByClassName("close")[1];
-
-            // When the user clicks the button, open the modalInfo 
-            openModalInfo = function() {
-                modalInfo.style.display = "block";
-                myFunction();
-            }
+        // When the user clicks the button, open the modalInfo 
+        openModalInfo = function() {
+            modalInfo.style.display = "block";
+            myFunction();
+        }
 
 
-            // When the user clicks on <span> (x), close the modalInfo
-            spanInfo.onclick = function() {
+        // When the user clicks on <span> (x), close the modalInfo
+        spanInfo.onclick = function() {
+            modalInfo.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modalInfo, close it
+        window.onclick = function(event) {
+            if (event.target == modalInfo) {
                 modalInfo.style.display = "none";
             }
+        }
+    </script>
 
-            // When the user clicks anywhere outside of the modalInfo, close it
-            window.onclick = function(event) {
-                if (event.target == modalInfo) {
-                    modalInfo.style.display = "none";
-                }
-            }
-        </script>
-
-        <footer style="width: 100%;">
-            <div class="footer">Copyright © 2020 Powered by <a style="color: gray; text-decoration: none; margin-left: 5px;" href="#" target="_blank">Bach Khoa
-                    University</a>
-            </div>
-        </footer>
+    <footer style="width: 100%;">
+        <div class="footer">Copyright © 2020 Powered by <a style="color: gray; text-decoration: none; margin-left: 5px;" href="#" target="_blank">Bach Khoa
+                University</a>
+        </div>
+    </footer>
 </body>
 
 </html>

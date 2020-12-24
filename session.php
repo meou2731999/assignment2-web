@@ -12,7 +12,7 @@ $row = mysqli_fetch_array($ses_sql, MYSQLI_ASSOC);
 if (isset($_SESSION['login_user'])) {
    $login_session = $row['username'];
    $email = $row['email'];
-   $birthday = $row['birdthday'];
+   $birthday = $row['birthday'];
    $gender = $row['gender'];
    $phone = $row['phone'];
    $avatar = $row['avatar'];

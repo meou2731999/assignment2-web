@@ -108,12 +108,12 @@
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
                         echo "<div class='sub_content'>
-                                <img src='./" . $row['img'] . "' alt='house1' class='sub_picture'>
+                                <img src='./img/" . $row['img'] . "' alt='house1' class='sub_picture'>
                                 <div class='sub_text'>
                                     <span>" . $row['category'] . "</span>
                                 </div>
                                 <div class='prices'>
-                                    <span>" . (string)($row['cost'] / 1000000) . " TR.VND</span>
+                                    <span>" . (string)($row['cost'] / 1000000) . "tr.VND</span>
                                 </div>
                             </div>";
                     }
@@ -131,7 +131,7 @@
                 <h2 style="margin-top: 20px !important;">Đăng nhập</h2>
             </div>
             <div class="modal-body">
-                <form action="login.php" method="POST">
+                <form action="login.php" method="POST" style="width: 100%;">
                     <input type="text" id="username" name="username" placeholder="Username" required>
                     <input type="password" id="password" name="password" placeholder="Password" required>
                     <div style="display: flex;justify-content: space-between;">
@@ -145,42 +145,68 @@
     <div id="myModalInfo" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <div class="button" style="margin-top: 18px;">
+                <div class="button" style="margin: 0px;">
                     <span class="close">&times;</span>
                 </div>
-                <h2 style="margin-top: 20px !important;">Thông tin</h2>
+                <h2 style="margin:0">Thông tin</h2>
             </div>
             <div class="modal-body">
-                <p>Tên đăng nhập: <b><?php echo $login_session; ?></b></p>
-                <p>Email: <b><?php echo $email; ?></b></p>
-                <p>Ngày sinh: <b><?php echo $birthday; ?></b></p>
-                <p>Giới tính: <b><?php echo $sex; ?></b></p>
+                <div class="modal-left">
+                    <?php echo "<img src='./img/" . $avatar . "'; style='width: 100%;height:auto;'>" ?>
+                </div>
+                <table class="modal-right">
+                    <td>
+                        <tr>
+                            <td><label><b>UserName </b></label></td>
+                            <td> <span><?php echo $login_session; ?></span></td>
+                        </tr>
+                        <tr>
+                            <td><label><b>Mail </b> </label></td>
+                            <td> <span><?php echo $email; ?></span></td>
+                        </tr>
+                        <tr>
+                            <td><label><b>Birthday </b></label></td>
+                            <td> <span><?php echo $birthday; ?></span></td>
+                        </tr>
+                        <tr>
+                            <td><label><b>Phone number</b></label></td>
+                            <td> <span><?php echo $phone; ?></span></td>
+                        </tr>
+                        <tr>
+                            <td><label><b>Gender</b></label></td>
+                            <td> <span><?php echo $gender; ?></span></td>
+                        </tr>
+                    </td>
+                </table>
             </div>
-            <div class="modal-footer"><button class="signup-btn" onclick="window.location='logout.php';">Đăng xuất</button></div>
+            <div class=" modal-footer" style="text-align: center;">
+                <button class="signup-btn" onclick="window.location='logout.php';">Đăng xuất</button>
+            </div>
         </div>
     </div>
     <script>
         function myFunction() {
             var x = document.getElementById("active_navbar");
-            if (x.style.height === "190px") {
+            if (x.style.height === "196px") {
                 document.getElementById("fa-bars").style.display = "unset";
                 document.getElementById("fa-times").style.display = "none";
                 x.style.height = "0px";
             } else {
-                x.style.height = "190px";
+                x.style.height = "196px";
                 document.getElementById("fa-bars").style.display = "none";
                 document.getElementById("fa-times").style.display = "unset";
             }
         }
 
-        function myFunctionforHome() {
+        function myFunctionForHome() {
             var x = document.getElementById("active_navbar");
-            if (x.style.height === "190px") {
+            if (x.style.height === "196px") {
                 document.getElementById("fa-bars").style.display = "unset";
                 document.getElementById("fa-times").style.display = "none";
                 x.style.height = "0px";
             }
         }
+        // Get the modal
         var modal = document.getElementById("myModal");
 
         // Get the <span> element that closes the modal
@@ -189,7 +215,10 @@
         // When the user clicks the button, open the modal 
         openModal = function() {
             modal.style.display = "block";
-            myFunction();
+            var x = document.getElementById("active_navbar");
+            if (x.style.height === "196px") {
+                myFunction();
+            }
         }
 
 

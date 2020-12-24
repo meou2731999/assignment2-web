@@ -83,7 +83,7 @@
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
                         echo "<div class='sub_content'>
-                                <img src='./" . $row['img'] . "' alt='house1' class='sub_picture'>
+                                <img src='./img/" . $row['img'] . "' alt='house1' class='sub_picture'>
                                 <div class='sub_text'>
                                     <span>" . $row['category'] . "</span>
                                 </div>
@@ -122,7 +122,7 @@
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) {
                             echo "<div class='sub_content'>
-                            <img src='./" . $row['img'] . "' alt='team1' class='sub_picture'>
+                            <img src='./img/" . $row['img'] . "' alt='team1' class='sub_picture about' style='height:300px; object-fit: none;        object-position: center;' >
                             <h3>" . $row['name'] . "</h3>
                             <h4>" . $row['position'] . "</h4>
                             <a href='mailto:" . $row['email'] . "' class='button about'>Liên hệ</a>
@@ -175,21 +175,46 @@
                 </div>
             </div>
         </div>
-        <div id="myModalInfo" class="modal">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <div class="button" style="margin-top: 18px;">
-                        <span class="close">&times;</span>
-                    </div>
-                    <h2 style="margin-top: 20px !important;">Thông tin</h2>
+    </div>
+    <div id="myModalInfo" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="button" style="margin: 0px;">
+                    <span class="close">&times;</span>
                 </div>
-                <div class="modal-body">
-                    <p>Tên đăng nhập: <b><?php echo $login_session; ?></b></p>
-                    <p>Email: <b><?php echo $email; ?></b></p>
-                    <p>Ngày sinh: <b><?php echo $birthday; ?></b></p>
-                    <p>Giới tính: <b><?php echo $sex; ?></b></p>
-                </div>
-                <div class="modal-footer"><button class="signup-btn" onclick="window.location='logout.php';">Đăng xuất</button></div>
+                <h2 style="margin:0">Thông tin</h2>
+            </div>
+            <div class="modal-body">
+                <table>
+                    <td rowspan="6" style="padding-right: 15px">
+                    <?php echo "<img src='./img/".$avatar."'; style='width: 200px;height:200px; border:1px; border-style:inset'>"?>
+                    </td>
+                    <td>
+                        <tr>
+                            <td><label><b>UserName  </b></label></td>
+                            <td> <span><?php echo $login_session; ?></span></td>
+                        </tr>
+                        <tr>
+                            <td><label><b>Mail </b> </label></td>
+                            <td> <span><?php echo $email; ?></span></td>
+                        </tr>
+                        <tr>
+                            <td><label><b>Birthday  </b></label></td>
+                            <td> <span><?php echo $birthday; ?></span></td>
+                        </tr>
+                        <tr>
+                            <td><label><b>Phone number</b></label></td>
+                            <td> <span><?php echo $phone; ?></span></td>
+                        </tr>
+                        <tr>
+                            <td><label><b>Gender</b></label></td>
+                            <td> <span><?php echo $gender; ?></span></td>
+                        </tr>
+                    </td>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button class="signup-btn" onclick="window.location='logout.php';">Đăng xuất</button></div>
             </div>
         </div>
 

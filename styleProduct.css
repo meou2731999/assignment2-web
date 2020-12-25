@@ -306,15 +306,6 @@ input[type=search] {
     color: black;
 }
 
-input[type="password"],
-select {
-    width: 100%;
-    padding: 15px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-}
 h2 {
     padding: 20px 0px;
     border-bottom: 1px solid rgb(221, 221, 221);
@@ -345,7 +336,7 @@ a {
     background-color: gray;
 }
 
-input[type=text],
+input[type="text"],input[type="date"], input[type="password"],input[type="tel"],input[type="file"], 
 select {
     width: 100%;
     padding: 15px 20px;

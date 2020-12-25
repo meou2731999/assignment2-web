@@ -184,6 +184,34 @@
             </div>
         </div>
     </div>
+    <div id="signupModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="button" style="margin-top: 18px;">
+                    <span class="close">&times;</span>
+                </div>
+                <h2 style="margin-top: 20px !important;">Đăng ký</h2>
+            </div>
+            <div class="modal-body">
+                <form action="signup.php" method="POST" style="width: 100%;">
+                    <input type="text" id="username" name="username" placeholder="Username" required>
+                    <input type="password" id="password" name="password" placeholder="Password" required>
+                    <input type="text" id="email" name="email" placeholder="Email">
+                    <input type="date" id="birthday" name="birthday" placeholder="Birthday">
+                    <input type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required id="phone" name="phone" placeholder="Phone">
+                    <select name="gender" id="gender">
+                        <option value="Nam">Nam</option>
+                        <option value="Nữ">Nữ</option>
+                        <option value="Khác">Khác</option>
+                    </select>
+                    <input type="file" id="avatar" name="avatar" placeholder="Avatar">
+                    <div style="display: flex;justify-content: space-between;">
+                        <input type="submit" value="Đăng ký">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
     <script>
         function myFunction() {
             var x = document.getElementById("active_navbar");
@@ -227,12 +255,6 @@
             modal.style.display = "none";
         }
 
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
         var modalInfo = document.getElementById("myModalInfo");
 
         // Get the <span> element that closes the modalInfo
@@ -250,12 +272,37 @@
             modalInfo.style.display = "none";
         }
 
-        // When the user clicks anywhere outside of the modalInfo, close it
+
+        // Get the modal signup
+        var modalSignup = document.getElementById("signupModal");
+
+        // Get the <span> element that closes the modal
+        var spanSignup = document.getElementsByClassName("close")[2];
+
+        // When the user clicks the button, open the modal 
+        openModalSignup = function() {
+            modalSignup.style.display = "block";
+        }
+
+
+        // When the user clicks on <span> (x), close the modal
+        spanSignup.onclick = function() {
+            modalSignup.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
         window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
             if (event.target == modalInfo) {
                 modalInfo.style.display = "none";
             }
+            if (event.target == modalSignup) {
+                modalSignup.style.display = "none";
+            }
         }
+
 
         function viewDetail(id) {
             var path = "product.php?id=" + id.toString();

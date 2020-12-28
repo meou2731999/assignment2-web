@@ -94,11 +94,6 @@ input[type=search] {
 .main_content {
     margin-top: 60px;   
     width: 100%;
-    background-image: url("img/architect.jpg");
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-position: bottom left;
-    background-size: cover;
 }
 
 .bold_black {

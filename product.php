@@ -136,7 +136,7 @@
                     <input type="password" id="password" name="password" placeholder="Password" required>
                     <div style="display: flex;justify-content: space-between;">
                         <input type="submit" value="Đăng nhập">
-                        <div class="signup-btn">Đăng ký</div>
+                        <div class="signup-btn" onclick="openModalSignup()">Đăng ký</div>
                     </div>
                 </form>
             </div>
@@ -179,7 +179,8 @@
                     </td>
                 </table>
             </div>
-            <div class=" modal-footer" style="text-align: center;">
+            <div class="modal-footer" style="text-align: center;">
+                <button class="signup-btn" onclick="openModalEditProfile()">Chỉnh sửa</button>
                 <button class="signup-btn" onclick="window.location='logout.php';">Đăng xuất</button>
             </div>
         </div>
@@ -205,8 +206,36 @@
                         <option value="Khác">Khác</option>
                     </select>
                     <input type="file" id="avatar" name="avatar" placeholder="Avatar">
-                    <div style="display: flex;justify-content: space-between;">
+                    <div style="display: flex;justify-content: center;">
                         <input type="submit" value="Đăng ký">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="editProfileModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="button" style="margin-top: 18px;">
+                    <span class="close">&times;</span>
+                </div>
+                <h2 style="margin-top: 20px !important;">Chỉnh sửa</h2>
+            </div>
+            <div class="modal-body">
+                <form action="editprofile.php" method="POST" style="width: 100%;">
+                    <input type="text" id="username" name="username" placeholder="<?php echo $login_session; ?>" required>
+                    <input type="password" id="password" name="password" placeholder="Password" required>
+                    <input type="text" id="email" name="email" placeholder="<?php echo $email; ?>">
+                    <input type="date" id="birthday" name="birthday" value="<?php echo $birthday; ?>">
+                    <input type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required id="phone" name="phone" placeholder="<?php echo $phone; ?>">
+                    <select name="gender" id="gender">
+                        <option value="Nam" <?php echo $gender == 'Nam' ? 'selected' : '' ?>>Nam</option>
+                        <option value="Nữ" <?php echo $gender == 'Nữ' ? 'selected' : '' ?>>Nữ</option>
+                        <option value="Khác" <?php echo $gender == 'Khác' ? 'selected' : '' ?>>Khác</option>
+                    </select>
+                    <input type="file" id="avatar" name="avatar" placeholder="Avatar">
+                    <div style="display: flex;justify-content: center;">
+                        <input type="submit" value="Lưu">
                     </div>
                 </form>
             </div>
@@ -234,7 +263,6 @@
                 x.style.height = "0px";
             }
         }
-        // Get the modal
         var modal = document.getElementById("myModal");
 
         // Get the <span> element that closes the modal
@@ -255,6 +283,8 @@
             modal.style.display = "none";
         }
 
+        /********************************************/
+
         var modalInfo = document.getElementById("myModalInfo");
 
         // Get the <span> element that closes the modalInfo
@@ -272,6 +302,7 @@
             modalInfo.style.display = "none";
         }
 
+        /********************************************/
 
         // Get the modal signup
         var modalSignup = document.getElementById("signupModal");
@@ -290,6 +321,27 @@
             modalSignup.style.display = "none";
         }
 
+        /********************************************/
+
+        var modalEditProfile = document.getElementById("editProfileModal");
+
+        // Get the <span> element that closes the modalEditProfile
+        var spanEditProfile = document.getElementsByClassName("close")[3];
+
+        // When the user clicks the button, open the modalEditProfile 
+        openModalEditProfile = function() {
+            modalEditProfile.style.display = "block";
+            myFunction();
+        }
+
+
+        // When the user clicks on <span> (x), close the modalEditProfile
+        spanEditProfile.onclick = function() {
+            modalEditProfile.style.display = "none";
+        }
+
+        /********************************************/
+
         // When the user clicks anywhere outside of the modal, close it
         window.onclick = function(event) {
             if (event.target == modal) {
@@ -301,8 +353,10 @@
             if (event.target == modalSignup) {
                 modalSignup.style.display = "none";
             }
+            if (event.target == modalEditProfile) {
+                modalEditProfile.style.display = "none";
+            }
         }
-
 
         function viewDetail(id) {
             var path = "product.php?id=" + id.toString();

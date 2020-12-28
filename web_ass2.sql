@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.3
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Dec 24, 2020 at 05:34 AM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.4.11
+-- Máy chủ: 127.0.0.1
+-- Thời gian đã tạo: Th12 28, 2020 lúc 02:57 PM
+-- Phiên bản máy phục vụ: 10.1.38-MariaDB
+-- Phiên bản PHP: 7.3.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -18,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `web_ass2`
+-- Cơ sở dữ liệu: `web_ass2`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `employee`
+-- Cấu trúc bảng cho bảng `employee`
 --
 
 CREATE TABLE `employee` (
@@ -36,7 +37,7 @@ CREATE TABLE `employee` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `employee`
+-- Đang đổ dữ liệu cho bảng `employee`
 --
 
 INSERT INTO `employee` (`id`, `name`, `position`, `email`, `img`) VALUES
@@ -48,7 +49,7 @@ INSERT INTO `employee` (`id`, `name`, `position`, `email`, `img`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `post`
+-- Cấu trúc bảng cho bảng `post`
 --
 
 CREATE TABLE `post` (
@@ -58,31 +59,32 @@ CREATE TABLE `post` (
   `poster` int(11) NOT NULL,
   `content` varchar(500) NOT NULL,
   `img` varchar(100) NOT NULL DEFAULT 'house.png',
-  `title` varchar(100) NOT NULL
+  `title` varchar(100) NOT NULL,
+  `address` varchar(8000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `post`
+-- Đang đổ dữ liệu cho bảng `post`
 --
 
-INSERT INTO `post` (`id`, `cost`, `category`, `poster`, `content`, `img`, `title`) VALUES
-(2, 1020000000, 'Villa tiền tỉ', 1, 'villa siêu rộng siêu đẹp, có gái xinh', 'nha1.jpg', 'Ngôi nhà mơ ước'),
-(3, 1020000000, 'Villa tiền tỉ', 1, 'villa siêu rộng siêu đẹp, có gái xinh', 'nha2.jpg', 'Ngôi nhà mơ ước'),
-(4, 1020000000, 'Villa tiền tỉ', 1, 'villa siêu rộng siêu đẹp, có gái xinh', 'nha3.jpg', 'Ngôi nhà mơ ước'),
-(5, 1020000000, 'Villa tiền tỉ', 1, 'villa siêu rộng siêu đẹp, có gái xinh', 'nha4.jpg', 'Ngôi nhà mơ ước'),
-(6, 1020000000, 'Villa tiền tỉ', 1, 'villa siêu rộng siêu đẹp, có gái xinh', 'nha5.jpg', 'Ngôi nhà mơ ước'),
-(7, 999000000, 'Nhà cấp 1', 1, 'Còn lại gì sau ...', 'nha6.jpg', 'Ngôi nhà mơ ước'),
-(8, 999000000, 'Nhà cấp 1', 2, 'Còn lại gì sau ...', 'nha7.jpg', 'Ngôi nhà mơ ước'),
-(9, 999000000, 'Nhà cấp 1', 3, 'Còn lại gì sau ...', 'nha6.jpg', 'Ngôi nhà mơ ước'),
-(10, 999000000, 'Nhà cấp 4', 3, 'Còn lại gì sau ...', 'nha4.jpg', 'Ngôi nhà mơ ước'),
-(11, 999000000, 'Nhà cấp 4', 3, 'Còn lại gì sau ...', 'nha8.jpg', 'Ngôi nhà mơ ước'),
-(12, 999000000, 'Nhà cấp 4', 4, 'Còn lại gì sau ...', 'nha1.jpg', 'Ngôi nhà mơ ước'),
-(13, 999000000, 'Nhà cấp 4', 4, 'Còn lại gì sau ...', 'nha3.jpg', 'Ngôi nhà mơ ước');
+INSERT INTO `post` (`id`, `cost`, `category`, `poster`, `content`, `img`, `title`, `address`) VALUES
+(2, 1020000000, 'Villa tiền tỉ', 1, 'villa siêu rộng siêu đẹp, có gái xinh', 'nha1.jpg', 'Ngôi nhà mơ ước', '51 Mậu Thân, Phường 3, Vĩnh Long, Việt Nam'),
+(3, 1020000000, 'Villa tiền tỉ', 1, 'villa siêu rộng siêu đẹp, có gái xinh', 'nha2.jpg', 'Ngôi nhà mơ ước', ''),
+(4, 1020000000, 'Villa tiền tỉ', 1, 'villa siêu rộng siêu đẹp, có gái xinh', 'nha3.jpg', 'Ngôi nhà mơ ước', 'ĐH60, Cẩm Sơn, Cai Lậy, Tiền Giang, Việt Nam'),
+(5, 1020000000, 'Villa tiền tỉ', 1, 'villa siêu rộng siêu đẹp, có gái xinh', 'nha4.jpg', 'Ngôi nhà mơ ước', 'Unnamed Road, Cai Lậy, Tiền Giang, Việt Nam'),
+(6, 1020000000, 'Villa tiền tỉ', 1, 'villa siêu rộng siêu đẹp, có gái xinh', 'nha5.jpg', 'Ngôi nhà mơ ước', 'Lâm Phú, Ninh Sơn, Ninh Thuận, Việt Nam'),
+(7, 999000000, 'Nhà cấp 1', 1, 'Còn lại gì sau ...', 'nha6.jpg', 'Ngôi nhà mơ ước', 'Sơn Xuân, Sơn Hòa, Phú Yên, Việt Nam'),
+(8, 999000000, 'Nhà cấp 1', 2, 'Còn lại gì sau ...', 'nha7.jpg', 'Ngôi nhà mơ ước', 'ĐT640, Phước Quang, Tuy Phước, Bình Định, Việt Nam'),
+(9, 999000000, 'Nhà cấp 1', 3, 'Còn lại gì sau ...', 'nha6.jpg', 'Ngôi nhà mơ ước', 'Unnamed Road, Phước Thắng, Tuy Phước, Bình Định, Việt Nam'),
+(10, 999000000, 'Nhà cấp 4', 3, 'Còn lại gì sau ...', 'nha4.jpg', 'Ngôi nhà mơ ước', 'ĐT635, Phú Hậu, Phù Cát, Bình Định, Việt Nam'),
+(11, 999000000, 'Nhà cấp 4', 3, 'Còn lại gì sau ...', 'nha8.jpg', 'Ngôi nhà mơ ước', 'QL19B, Cát Tiến, Phù Cát, Bình Định, Việt Nam'),
+(12, 999000000, 'Nhà cấp 4', 4, 'Còn lại gì sau ...', 'nha1.jpg', 'Ngôi nhà mơ ước', 'QL19B, Cát Tiến, Phù Cát, Bình Định, Việt Nam'),
+(13, 999000000, 'Nhà cấp 4', 4, 'Còn lại gì sau ...', 'nha3.jpg', 'Ngôi nhà mơ ước', 'ĐT640, Phù Cát, Bình Định, Việt Nam');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Cấu trúc bảng cho bảng `user`
 --
 
 CREATE TABLE `user` (
@@ -98,7 +100,7 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `user`
+-- Đang đổ dữ liệu cho bảng `user`
 --
 
 INSERT INTO `user` (`id`, `username`, `password`, `email`, `birthday`, `role`, `avatar`, `phone`, `gender`) VALUES
@@ -109,45 +111,45 @@ INSERT INTO `user` (`id`, `username`, `password`, `email`, `birthday`, `role`, `
 (5, 'user4', '25d55ad283aa400af464c76d713c07ad', 'user4@gmail.com', '2020-12-22', 0, 'user4.png', '0646345469', 'female');
 
 --
--- Indexes for dumped tables
+-- Chỉ mục cho các bảng đã đổ
 --
 
 --
--- Indexes for table `employee`
+-- Chỉ mục cho bảng `employee`
 --
 ALTER TABLE `employee`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `post`
+-- Chỉ mục cho bảng `post`
 --
 ALTER TABLE `post`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `user`
+-- Chỉ mục cho bảng `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT cho các bảng đã đổ
 --
 
 --
--- AUTO_INCREMENT for table `employee`
+-- AUTO_INCREMENT cho bảng `employee`
 --
 ALTER TABLE `employee`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `post`
+-- AUTO_INCREMENT cho bảng `post`
 --
 ALTER TABLE `post`
   MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- AUTO_INCREMENT for table `user`
+-- AUTO_INCREMENT cho bảng `user`
 --
 ALTER TABLE `user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;

@@ -399,19 +399,6 @@
             var path = "product.php?id=" + id.toString();
             window.location = path;
         }
-
-        if (window.location.hash === '#login_eror') {
-            window.alert("Afdsaf");
-            if(!isset($_SESSION['login_user'])){
-                var modal = document.getElementById("myModal");
-                modal.style.display = "block";
-                var x = document.getElementById("active_navbar");
-                if (x.style.height === "196px") {
-                    myFunction();
-                }
-                document.getElementById("login_error").innerHTML = "Your Login Name or Password is invalid";
-            }
-        }
     </script>
 
     <footer style="width: 100%;">
@@ -420,5 +407,12 @@
         </div>
     </footer>
 </body>
-
+<?php
+if(isset($_SESSION['login_error']) & (!isset($_SESSION['login_user']))){
+    echo "<script type='text/javascript'>
+    openModal();
+    document.getElementById('login_error').innerHTML = 'Your Login Name or Password is invalid !';
+    </script>";}
+    unset($_SESSION['login_error']);
+?>
 </html>

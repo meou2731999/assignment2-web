@@ -24,6 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
       header("location: index.php");
    } else {
+      //$error = "Your Login Name or Password is invalid";
       $_SESSION['login_error'] = "error";
       header("location: index.php#login_error");
    }

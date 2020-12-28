@@ -30,13 +30,13 @@
             echo "<a href='#' id='myBtnInfo' class='button' onclick='openModalInfo()'> Hello:" . $login_session . "</a>";
         }
         ?>
-        <a href="#contact" class="button">
+        <a href="index.php#contact" class="button">
             Liên hệ
         </a>
-        <a href="#about" class="button">
+        <a href="index.php##about" class="button">
             Giới thiệu
         </a>
-        <a href="#projects" class="button">
+        <a href="index.php#projects" class="button">
             Dự án
         </a>
     </div>
@@ -76,7 +76,7 @@
                 $sql = "SELECT * FROM post WHERE id = '$postid'";
                 $result = mysqli_query($db, $sql);
                 $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-                echo "<h3 style='margin:30px 0px;'><a href='index.php'>Home<a>>".$row['category']."</h3>
+                echo "<h3 style='margin:30px 0px;'>Home>".$row['category']."</h3>
                 <div class='sub_content_product'>
                     <div class='product-picture'>
                     <img src='./img/" . $row['img'] ."' alt='".$row['img']."' class='sub_picture'>

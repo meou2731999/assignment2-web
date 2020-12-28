@@ -169,6 +169,7 @@
                 <form action="login.php" method="POST" style="width: 100%;">
                     <input type="text" id="username" name="username" placeholder="Username" required>
                     <input type="password" id="password" name="password" placeholder="Password" required>
+                    <div id="login_error" style="font-size:11px; color:#cc0000; margin-top:10px"></div>
                     <div style="display: flex;justify-content: space-between;">
                         <input type="submit" value="Đăng nhập">
                         <div class="signup-btn" onclick="openModalSignup()">Đăng ký</div>
@@ -397,6 +398,19 @@
         function viewDetail(id) {
             var path = "product.php?id=" + id.toString();
             window.location = path;
+        }
+
+        if (window.location.hash === '#login_eror') {
+            window.alert("Afdsaf");
+            if(!isset($_SESSION['login_user'])){
+                var modal = document.getElementById("myModal");
+                modal.style.display = "block";
+                var x = document.getElementById("active_navbar");
+                if (x.style.height === "196px") {
+                    myFunction();
+                }
+                document.getElementById("login_error").innerHTML = "Your Login Name or Password is invalid";
+            }
         }
     </script>
 

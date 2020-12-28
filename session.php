@@ -10,6 +10,7 @@ $row = mysqli_fetch_array($ses_sql, MYSQLI_ASSOC);
 
 
 if (isset($_SESSION['login_user'])) {
+   $userid_session = $row['id'];
    $login_session = $row['username'];
    $email = $row['email'];
    $birthday = $row['birthday'];

@@ -230,7 +230,7 @@
                 <h2 style="margin-top: 20px !important;">Đăng ký</h2>
             </div>
             <div class="modal-body">
-                <form action="signup.php" method="POST" style="width: 100%;">
+                <form action="signup.php" method="POST" style="width: 100%;" enctype="multipart/form-data">
                     <input type="text" id="username" name="username" placeholder="Username" required>
                     <input type="password" id="password" name="password" placeholder="Password" required>
                     <input type="text" id="email" name="email" placeholder="Email">
@@ -259,12 +259,13 @@
                 <h2 style="margin-top: 20px !important;">Chỉnh sửa</h2>
             </div>
             <div class="modal-body">
-                <form action="editprofile.php" method="POST" style="width: 100%;">
+                <form action="editprofile.php" method="POST" style="width: 100%;" enctype="multipart/form-data">
+                    <input type="hidden" id="id" name="id" value="<?php echo $userid_session; ?>" >
                     <input type="text" id="username" name="username" placeholder="<?php echo $login_session; ?>" required>
                     <input type="password" id="password" name="password" placeholder="Password" required>
                     <input type="text" id="email" name="email" placeholder="<?php echo $email; ?>">
                     <input type="date" id="birthday" name="birthday" value="<?php echo $birthday; ?>">
-                    <input type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required id="phone" name="phone" placeholder="<?php echo $phone; ?>">
+                    <input type="tel" pattern="[0-9]{10}" required id="phone" name="phone" placeholder="<?php echo $phone; ?>">
                     <select name="gender" id="gender">
                         <option value="Nam" <?php echo $gender == 'Nam' ? 'selected' : '' ?>>Nam</option>
                         <option value="Nữ" <?php echo $gender == 'Nữ' ? 'selected' : '' ?>>Nữ</option>

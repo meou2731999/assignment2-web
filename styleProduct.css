@@ -1,5 +1,5 @@
 * {
-    font-family: "Montserrat", sans-serif;
+    font-family: 'Montserrat', sans-serif;
     text-decoration: none;
     font-weight: 500;
     margin: unset;
@@ -72,43 +72,33 @@ p {
     background-color: rgb(187, 187, 187);
 }
 
+.search-box {
+    margin: 5px;
+    float: right;
+    color: black;
+    letter-spacing: 2px;
+}
+
+input[type=search] {
+    width: 100%;
+    color: black;
+    border: none;
+    padding: 5px;
+    border: 1px solid rgb(187, 187, 187);
+}
+
 .home {
     float: left;
 }
 
 .main_content {
-    margin-top: 60px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    margin-top: 60px;   
     width: 100%;
-}
-
-.top_content {
-    width: 100%;
-    height: auto;
-    position: relative;
-    max-width: 1500px;
-}
-
-.main_picture {
-    width: 100%;
-    height: auto;
-    margin: 0px 0px;
-}
-
-.text_in_main_pic {
-    font-size: 35px;
-    color: white;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
 }
 
 .bold_black {
     background-color: black;
-    opacity: 85%;
+    opacity: 65%;
     padding: 10px 20px;
 }
 
@@ -116,19 +106,44 @@ p {
     padding: 20px 25px;
 }
 
-#projects,
-#about,
-#contact {
-    max-width: 1550px;
+#products {
     width: 100%;
+    max-width: 1550px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: 5px;
+    margin-right: auto;
+    margin-left: auto;
+    box-sizing: border-box;
+    padding: 10px;
+    background-color: white;
+}
+.prices {
+    position: absolute;
+    background-color: white;
+    color: black;
+    padding: 10px;
+    bottom: 10px;
+    right: 10px;
+    font-weight: 800;
+    font-size: 120%;
+}
+.mini-pic-contain {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
 }
 
-.projects_content {
+.mini-pic-contain * {
+    width: 24%;
+    height: 24%;
+}
+
+.sub_content_product {
     display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
     position: relative;
-    padding: 15px;
 }
 
 .sub_content {
@@ -157,6 +172,54 @@ p {
     .sub_content {
         width: 100%;
     }
+}
+
+.product-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 50%;
+    margin-left: 20px;
+}
+
+#projects {
+    max-width: 1550px;
+    width: 100%;
+    background-color: white;
+    margin: 0px auto;
+}
+
+.projects_content {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    position: relative;
+    padding: 15px;
+}
+
+.product-picture {
+    position: relative;
+    width: 60%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+.decription {
+    margin-top: 10px;
+}
+
+@media only screen and (max-width: 1300px) {
+    .product-picture {
+        width: 60%;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .product-picture {
+        width: 100%;
+        max-width: unset;
+    }
     .main_title {
         display: none;
     }
@@ -170,16 +233,13 @@ p {
     #active_navbar {
         height: 0px;
     }
-}
-
-.main_title {
-    text-shadow: 1px 1px black;
-}
-
-.sub_picture {
-    width: 100%;
-    height: auto;
-    filter: grayscale(50%);
+    .sub_content_product {
+        flex-direction: column;
+    }
+    .product-content {
+        width: 100%;
+        margin-left: unset;
+    }
 }
 
 .sub_text {
@@ -191,25 +251,63 @@ p {
     left: 10px;
 }
 
-.prices {
-    position: absolute;
-    background-color: black;
-    color: whitesmoke;
-    padding: 10px;
-    bottom: 10px;
-    right: 10px;
-    font-weight: 800;
-    font-size: 130%;
+.left-side {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    box-sizing: border-box;
+    border-right: 1px solid silver;
+}
+
+.left-side h3 {
+    border-top: 1px solid silver;
+    padding-top: 20px;
+}
+
+.right-side {
+    width: 160px;
+    height: 600px;
+}
+.cover {
+    background-image: url("img/architect.jpg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: bottom left;
+    background-size: cover;
+    width: 160px;
+    height: 600px;
+}
+
+.sub_picture {
+    width: 100%;
+    height: auto;
+    filter: grayscale(50%);
+}
+
+.signup-btn{
+    width: auto;
+    text-decoration: unset;
+    border: 1px solid black;
+    background-color: white;
+    color: black;
+    padding: 14px 28px;
+    margin: 8px 0;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.signup-btn:hover {
+    background-color: gray;
+    color: black;
 }
 
 h2 {
     padding: 20px 0px;
     border-bottom: 1px solid rgb(221, 221, 221);
-    margin-top: 40px;
 }
 
 h3 {
-    font-size: 1.5em;
+    font-size: 1.2em;
     margin: 10px 0px;
 }
 
@@ -217,12 +315,16 @@ h4 {
     margin: 20px 0px;
 }
 
+a {
+    color: black;
+    margin-top: 10px;
+}
+
 .button.about {
     background-color: rgb(230, 230, 230);
     width: calc(100% - 20px);
-    float: initial;
-    margin: auto;
     text-align: center;
+    margin: unset;
 }
 
 .button.about:hover {
@@ -239,7 +341,7 @@ select {
     box-sizing: border-box;
 }
 
-input[type="submit"] {
+input[type=submit] {
     width: auto;
     background-color: black;
     color: white;
@@ -249,24 +351,7 @@ input[type="submit"] {
     cursor: pointer;
 }
 
-input[type="submit"]:hover {
-    background-color: gray;
-    color: black;
-}
-
-.signup-btn{
-    width: auto;
-    text-decoration: unset;
-    border: 1px solid black;
-    background-color: white;
-    color: black;
-    padding: 14px 28px;
-    margin: 8px 0;
-    cursor: pointer;
-    font-size: 13px;
-}
-
-.signup-btn:hover {
+input[type=submit]:hover {
     background-color: gray;
     color: black;
 }

@@ -235,13 +235,14 @@
                     <input type="password" id="password" name="password" placeholder="Password" required>
                     <input type="text" id="email" name="email" placeholder="Email">
                     <input type="date" id="birthday" name="birthday" placeholder="Birthday">
-                    <input type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required id="phone" name="phone" placeholder="Phone">
+                    <input type="tel" pattern="[0-9]{10}" required id="phone" name="phone" placeholder="Phone">
                     <select name="gender" id="gender">
                         <option value="Nam">Nam</option>
                         <option value="Nữ">Nữ</option>
                         <option value="Khác">Khác</option>
                     </select>
                     <input type="file" id="avatar" name="avatar" placeholder="Avatar">
+                    <div id="signup_error" style="font-size:11px; color:#cc0000; margin-top:10px"></div>
                     <div style="display: flex;justify-content: center;">
                         <input type="submit" value="Đăng ký">
                     </div>
@@ -408,11 +409,25 @@
     </footer>
 </body>
 <?php
-if(isset($_SESSION['login_error']) & (!isset($_SESSION['login_user']))){
-    echo "<script type='text/javascript'>
-    openModal();
-    document.getElementById('login_error').innerHTML = 'Your Login Name or Password is invalid !';
-    </script>";}
+    if(isset($_SESSION['login_error']) & (!isset($_SESSION['login_user']))){
+        echo "<script type='text/javascript'>
+        openModal();
+        document.getElementById('login_error').innerHTML = 'Your Login Name or Password is invalid !';
+        </script>";
+    }
+    if(isset($_SESSION['signup_error']) & (!isset($_SESSION['login_user']))){
+        echo "<script type='text/javascript'>
+        openModalSignup();
+        document.getElementById('signup_error').innerHTML = 'Fill all value !';
+        </script>";
+    }
+    if(isset($_SESSION['signup_success']) & (!isset($_SESSION['login_user']))){
+        echo "<script type='text/javascript'>
+        alert('Signup success!');
+        </script>";
+    }
     unset($_SESSION['login_error']);
+    unset($_SESSION['signup_error']);
+    unset($_SESSION['signup_success']);
 ?>
 </html>

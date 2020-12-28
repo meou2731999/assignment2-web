@@ -1,6 +1,7 @@
 <?php
 include("config.php");
 include("images_helper.php");
+include("session.php");
 session_start();
     $id = addslashes($_POST['id']);
     $username = addslashes($_POST['username']);
@@ -23,6 +24,7 @@ session_start();
         move_uploaded_file($_FILES["avatar"]["tmp_name"],$link_img);														
     }
     $addmember = mysqli_query($db,"
-	UPDATE user SET username= '{$username}', password='{$password}', email='{$email}', phone='{$phone}', gender='{$gender}', avatar='{$avatar}', birthday='{$birthday}' WHERE id='{$id}'");
+    UPDATE user SET username= '{$username}', password='{$password}', email='{$email}', phone='{$phone}', gender='{$gender}', avatar='{$avatar}', birthday='{$birthday}' WHERE id='{$id}'");
+    
     header("location: index.php");
 ?>

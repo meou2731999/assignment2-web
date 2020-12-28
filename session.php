@@ -2,9 +2,9 @@
 include('config.php');
 session_start();
 
-$user_check = $_SESSION['login_user'];
+$user_check = $_SESSION['userid'];
 
-$ses_sql = mysqli_query($db, "select * from user where username = '$user_check' ");
+$ses_sql = mysqli_query($db, "select * from user where id = '$user_check' ");
 
 $row = mysqli_fetch_array($ses_sql, MYSQLI_ASSOC);
 

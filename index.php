@@ -68,7 +68,7 @@
             ?>
         </div>
     </div>
-    <div class=" main_content">
+    <div class="main_content">
         <div class="top_content">
             <img src="./img/architect.jpg" alt="architect" class="main_picture">
         </div>
@@ -216,6 +216,9 @@
                 </table>
             </div>
             <div class="modal-footer" style="text-align: center;">
+                <?php echo $role == 1 ?
+                    '<button class="signup-btn" onclick="openAdminManagement()">Quản lý</button>' : '';
+                ?>
                 <button class="signup-btn" onclick="openModalEditProfile()">Chỉnh sửa</button>
                 <button class="signup-btn" onclick="window.location='logout.php';">Đăng xuất</button>
             </div>
@@ -260,7 +263,7 @@
             </div>
             <div class="modal-body">
                 <form action="editprofile.php" method="POST" style="width: 100%;" enctype="multipart/form-data">
-                    <input type="hidden" id="id" name="id" value="<?php echo $userid_session; ?>" >
+                    <input type="hidden" id="id" name="id" value="<?php echo $userid_session; ?>">
                     <input type="text" id="username" name="username" placeholder="<?php echo $login_session; ?>" required>
                     <input type="password" id="password" name="password" placeholder="Password" required>
                     <input type="text" id="email" name="email" placeholder="<?php echo $email; ?>">
@@ -397,6 +400,10 @@
             }
         }
 
+        function openAdminManagement() {
+            window.location = 'admin.php';
+        }
+
         function viewDetail(id) {
             var path = "product.php?id=" + id.toString();
             window.location = path;
@@ -410,25 +417,26 @@
     </footer>
 </body>
 <?php
-    if(isset($_SESSION['login_error']) & (!isset($_SESSION['login_user']))){
-        echo "<script type='text/javascript'>
+if (isset($_SESSION['login_error']) & (!isset($_SESSION['login_user']))) {
+    echo "<script type='text/javascript'>
         openModal();
         document.getElementById('login_error').innerHTML = 'Your Login Name or Password is invalid !';
         </script>";
-    }
-    if(isset($_SESSION['signup_error']) & (!isset($_SESSION['login_user']))){
-        echo "<script type='text/javascript'>
+}
+if (isset($_SESSION['signup_error']) & (!isset($_SESSION['login_user']))) {
+    echo "<script type='text/javascript'>
         openModalSignup();
         document.getElementById('signup_error').innerHTML = 'Fill all value !';
         </script>";
-    }
-    if(isset($_SESSION['signup_success']) & (!isset($_SESSION['login_user']))){
-        echo "<script type='text/javascript'>
+}
+if (isset($_SESSION['signup_success']) & (!isset($_SESSION['login_user']))) {
+    echo "<script type='text/javascript'>
         alert('Signup success!');
         </script>";
-    }
-    unset($_SESSION['login_error']);
-    unset($_SESSION['signup_error']);
-    unset($_SESSION['signup_success']);
+}
+unset($_SESSION['login_error']);
+unset($_SESSION['signup_error']);
+unset($_SESSION['signup_success']);
 ?>
+
 </html>

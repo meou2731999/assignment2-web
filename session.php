@@ -17,5 +17,6 @@ if (isset($_SESSION['login_user'])) {
    $gender = $row['gender'];
    $phone = $row['phone'];
    $avatar = $row['avatar'];
+   $role = $row['role'];
    // header("location:index.php");
 }

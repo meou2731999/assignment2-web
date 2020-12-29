@@ -111,7 +111,6 @@ input[type=search] {
     max-width: 1550px;
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
     margin: 5px;
     margin-right: auto;
     margin-left: auto;

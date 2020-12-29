@@ -114,33 +114,29 @@
                         }
                     }
                     ?>
-                    <tr>
-                        <!-- pagination -->
-                        <?php
-                        // nếu current_page > 1 và total_page > 1 mới hiển thị nút prev
-                        if ($current_page_user > 1 && $total_page_user > 1) {
-                            echo '<a href="admin.php?page_user=' . ($current_page_user - 1) . '">Prev</a> | ';
-                        }
-
-                        // Lặp khoảng giữa
-                        for ($i = 1; $i <= $total_page_user; $i++) {
-                            // Nếu là trang hiện tại thì hiển thị thẻ span
-                            // ngược lại hiển thị thẻ a
-                            if ($i == $current_page_user) {
-                                echo '<span>' . $i . '</span> | ';
-                            } else {
-                                echo '<a href="admin.php?page_user=' . $i . '">' . $i . '</a> | ';
-                            }
-                        }
-                        // nếu current_page < $total_page và total_page > 1 mới hiển thị nút prev
-                        if ($current_page_user < $total_page_user && $total_page_user > 1) {
-                            echo '<a href="admin.php?page_user=' . ($current_page_user + 1) . '">Next</a> | ';
-                        }
-                        ?>
-                    </tr>
-
-
                 </table>
+                <!-- pagination -->
+                <?php
+                // nếu current_page > 1 và total_page > 1 mới hiển thị nút prev
+                if ($current_page_user > 1 && $total_page_user > 1) {
+                    echo '<a href="admin.php?page_user=' . ($current_page_user - 1) . '">Prev</a> | ';
+                }
+
+                // Lặp khoảng giữa
+                for ($i = 1; $i <= $total_page_user; $i++) {
+                    // Nếu là trang hiện tại thì hiển thị thẻ span
+                    // ngược lại hiển thị thẻ a
+                    if ($i == $current_page_user) {
+                        echo '<span>' . $i . '</span> | ';
+                    } else {
+                        echo '<a href="admin.php?page_user=' . $i . '">' . $i . '</a> | ';
+                    }
+                }
+                // nếu current_page < $total_page và total_page > 1 mới hiển thị nút prev
+                if ($current_page_user < $total_page_user && $total_page_user > 1) {
+                    echo '<a href="admin.php?page_user=' . ($current_page_user + 1) . '">Next</a> | ';
+                }
+                ?>
             </div>
         </div>
         <div id="products">
@@ -195,31 +191,29 @@
                         }
                     }
                     ?>
-                    <tr>
-                        <!-- pagination -->
-                        <?php
-                        // nếu current_page > 1 và total_page > 1 mới hiển thị nút prev
-                        if ($current_page_post > 1 && $total_page_post > 1) {
-                            echo '<a href="admin.php?page_post=' . ($current_page_post - 1) . '">Prev</a> | ';
-                        }
-
-                        // Lặp khoảng giữa
-                        for ($i = 1; $i <= $total_page_post; $i++) {
-                            // Nếu là trang hiện tại thì hiển thị thẻ span
-                            // ngược lại hiển thị thẻ a
-                            if ($i == $current_page_post) {
-                                echo '<span>' . $i . '</span> | ';
-                            } else {
-                                echo '<a href="admin.php?page_post=' . $i . '">' . $i . '</a> | ';
-                            }
-                        }
-                        // nếu current_page < $total_page và total_page > 1 mới hiển thị nút prev
-                        if ($current_page_post < $total_page_post && $total_page_post > 1) {
-                            echo '<a href="admin.php?page_post=' . ($current_page_post + 1) . '">Next</a> | ';
-                        }
-                        ?>
-                    </tr>
                 </table>
+                <!-- pagination -->
+                <?php
+                // nếu current_page > 1 và total_page > 1 mới hiển thị nút prev
+                if ($current_page_post > 1 && $total_page_post > 1) {
+                    echo '<a href="admin.php?page_post=' . ($current_page_post - 1) . '">Prev</a> | ';
+                }
+
+                // Lặp khoảng giữa
+                for ($i = 1; $i <= $total_page_post; $i++) {
+                    // Nếu là trang hiện tại thì hiển thị thẻ span
+                    // ngược lại hiển thị thẻ a
+                    if ($i == $current_page_post) {
+                        echo '<span>' . $i . '</span> | ';
+                    } else {
+                        echo '<a href="admin.php?page_post=' . $i . '">' . $i . '</a> | ';
+                    }
+                }
+                // nếu current_page < $total_page và total_page > 1 mới hiển thị nút prev
+                if ($current_page_post < $total_page_post && $total_page_post > 1) {
+                    echo '<a href="admin.php?page_post=' . ($current_page_post + 1) . '">Next</a> | ';
+                }
+                ?>
             </div>
         </div>
     </div>

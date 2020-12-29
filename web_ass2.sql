@@ -68,18 +68,26 @@ CREATE TABLE `post` (
 --
 
 INSERT INTO `post` (`id`, `cost`, `category`, `poster`, `content`, `img`, `title`, `address`) VALUES
-(2, 1020000000, 'Villa tiền tỉ', 1, 'villa siêu rộng siêu đẹp, có gái xinh', 'nha1.jpg', 'Ngôi nhà mơ ước', '51 Mậu Thân, Phường 3, Vĩnh Long, Việt Nam'),
-(3, 1020000000, 'Villa tiền tỉ', 1, 'villa siêu rộng siêu đẹp, có gái xinh', 'nha2.jpg', 'Ngôi nhà mơ ước', ''),
-(4, 1020000000, 'Villa tiền tỉ', 1, 'villa siêu rộng siêu đẹp, có gái xinh', 'nha3.jpg', 'Ngôi nhà mơ ước', 'ĐH60, Cẩm Sơn, Cai Lậy, Tiền Giang, Việt Nam'),
-(5, 1020000000, 'Villa tiền tỉ', 1, 'villa siêu rộng siêu đẹp, có gái xinh', 'nha4.jpg', 'Ngôi nhà mơ ước', 'Unnamed Road, Cai Lậy, Tiền Giang, Việt Nam'),
-(6, 1020000000, 'Villa tiền tỉ', 1, 'villa siêu rộng siêu đẹp, có gái xinh', 'nha5.jpg', 'Ngôi nhà mơ ước', 'Lâm Phú, Ninh Sơn, Ninh Thuận, Việt Nam'),
-(7, 999000000, 'Nhà cấp 1', 1, 'Còn lại gì sau ...', 'nha6.jpg', 'Ngôi nhà mơ ước', 'Sơn Xuân, Sơn Hòa, Phú Yên, Việt Nam'),
-(8, 999000000, 'Nhà cấp 1', 2, 'Còn lại gì sau ...', 'nha7.jpg', 'Ngôi nhà mơ ước', 'ĐT640, Phước Quang, Tuy Phước, Bình Định, Việt Nam'),
-(9, 999000000, 'Nhà cấp 1', 3, 'Còn lại gì sau ...', 'nha6.jpg', 'Ngôi nhà mơ ước', 'Unnamed Road, Phước Thắng, Tuy Phước, Bình Định, Việt Nam'),
-(10, 999000000, 'Nhà cấp 4', 3, 'Còn lại gì sau ...', 'nha4.jpg', 'Ngôi nhà mơ ước', 'ĐT635, Phú Hậu, Phù Cát, Bình Định, Việt Nam'),
-(11, 999000000, 'Nhà cấp 4', 3, 'Còn lại gì sau ...', 'nha8.jpg', 'Ngôi nhà mơ ước', 'QL19B, Cát Tiến, Phù Cát, Bình Định, Việt Nam'),
-(12, 999000000, 'Nhà cấp 4', 4, 'Còn lại gì sau ...', 'nha1.jpg', 'Ngôi nhà mơ ước', 'QL19B, Cát Tiến, Phù Cát, Bình Định, Việt Nam'),
-(13, 999000000, 'Nhà cấp 4', 4, 'Còn lại gì sau ...', 'nha3.jpg', 'Ngôi nhà mơ ước', 'ĐT640, Phù Cát, Bình Định, Việt Nam');
+(1, 1234567890, 'Phong cách Châu Âu', 1, 'Chủ đầu tư: Ngân hàng Thương mại cổ phần Công Thương Việt Nam', 'nha1.jpg', 'Ngôi nhà của ngân hàng', '345-356 Nguyễn Thị Minh Khai, phường 5, quận 3, TP.HCM'),
+(2, 1020000000, 'Phong cách Châu Âu', 1, 'Đơn vị thiết kế: Công ty TNHH Sữa chữa nhà Doctor Home', 'nha1.jpg', 'Ngôi nhà của Doctor home', '51 Mậu Thân, Phường 3, Vĩnh Long, Việt Nam'),
+(3, 1124000000, 'Villa tiền tỉ', 1, 'Nhà thầu thi công: Công ty TNHH Sữa chữa nhà Doctor Home', 'nha2.jpg', 'Villa của Doctor hoem', '200, đường Ba Tháng Hai, phường 12, quận 10, TP.HCM'),
+(4, 2020000000, 'Villa tiền tỉ', 1, 'villa siêu rộng siêu đẹp, có gái xinh', 'nha3.jpg', 'Ngôi nhà mơ ước', 'ĐH60, Cẩm Sơn, Cai Lậy, Tiền Giang, Việt Nam'),
+(5, 1999999999, 'Phong cách châu Á', 1, 'Chủ đầu tư: Anh Tài', 'nha4.jpg', 'Ngôi nhà do anh Tài đầu tư', 'Unnamed Road, Cai Lậy, Tiền Giang, Việt Nam'),
+(6, 1500000000, 'Phong cách Châu Á', 1, 'Dự án do Happy home quản lí', 'nha5.jpg', 'Happy home house', 'Lâm Phú, Ninh Sơn, Ninh Thuận, Việt Nam'),
+(7, 999000000, 'Nhà cấp 1', 2, 'Ngôi nhà cấp 1 A', 'nha6.jpg', 'Nhà cấp 1 loại A', 'Sơn Xuân, Sơn Hòa, Phú Yên, Việt Nam'),
+(8, 99999999, 'Nhà cấp 1', 2, 'Ngôi nhà cấp 1 B', 'nha7.jpg', 'Nhà cấp 1 loại B', 'ĐT640, Phước Quang, Tuy Phước, Bình Định, Việt Nam'),
+(9, 99900000, 'Nhà cấp 1', 2, 'Ngôi nhà cấp 1 C', 'nha6.jpg', 'Nhà cấp 1 loại C', 'Unnamed Road, Phước Thắng, Tuy Phước, Bình Định, Việt Nam'),
+(10, 888000000, 'Nhà cấp 4', 3, 'Nhà cấp 4 loại 1A', 'nha4.jpg', 'Nhà cấp 4 1A', 'ĐT635, Phú Hậu, Phù Cát, Bình Định, Việt Nam'),
+(11, 777000000, 'Nhà cấp 4', 3, 'Nhà cấp 4 loại 4B', 'nha8.jpg', 'Nhà cấp 4 4B', '273/46 Nguyễn Văn Đậu, phường 11, quận Bình Thạnh, TPHCM'),
+(12, 666000000, 'Nhà cấp 4', 4, 'Nhà cấp 4 basic', 'nha1.jpg', 'Nhà cấp 4 basic', '40 Thảo Điền, P. Thảo Điền, Q 2, TPHCM'),
+(13, 555000000, 'Nhà cấp 4', 4, 'Nhà cấp 4 cách tân', 'nha3.jpg', 'New 4 house', '2-4-6 Đồng Khởi, P. Bến Nghé, Q.1, TPhcM'),
+(14, 999000000, 'Nhà cấp 1', 2, 'Ngôi nhà cấp 1 A', 'nha6.jpg', 'Nhà cấp 1 loại A', 'Sơn Xuân, Sơn Hòa, Phú Yên, Việt Nam'),
+(15, 99900000, 'Nhà cấp 1', 2, 'Ngôi nhà cấp 1 C', 'nha6.jpg', 'Nhà cấp 1 loại C', 'Unnamed Road, Phước Thắng, Tuy Phước, Bình Định, Việt Nam'),
+(16, 1124000000, 'Villa tiền tỉ', 1, 'Nhà thầu thi công: Công ty TNHH Sữa chữa nhà Doctor Home', 'nha2.jpg', 'Villa của Doctor hoem', '200, đường Ba Tháng Hai, phường 12, quận 10, TP.HCM'),
+(17, 1500000000, 'Phong cách Châu Á', 1, 'Dự án do Happy home quản lí', 'nha5.jpg', 'Happy home house', 'Lâm Phú, Ninh Sơn, Ninh Thuận, Việt Nam'),
+(18, 555000000, 'Nhà cấp 4', 4, 'Nhà cấp 4 cách tân', 'nha3.jpg', 'New 4 house', '2-4-6 Đồng Khởi, P. Bến Nghé, Q.1, TPhcM'),
+(19, 1234567890, 'Phong cách Châu Âu', 1, 'Chủ đầu tư: Ngân hàng Thương mại cổ phần Công Thương Việt Nam', 'nha1.jpg', 'Ngôi nhà của ngân hàng', '345-356 Nguyễn Thị Minh Khai, phường 5, quận 3, TP.HCM'),
+(20, 99900000, 'Nhà cấp 1', 2, 'Ngôi nhà cấp 1 C', 'nha6.jpg', 'Nhà cấp 1 loại C', 'Unnamed Road, Phước Thắng, Tuy Phước, Bình Định, Việt Nam');
 
 -- --------------------------------------------------------
 
@@ -106,9 +114,15 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`id`, `username`, `password`, `email`, `birthday`, `role`, `avatar`, `phone`, `gender`) VALUES
 (1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin@gmail.com', '2018-08-16', 1, 'unnamed.png', '0964410362', 'none'),
 (2, 'user1', '25d55ad283aa400af464c76d713c07ad', 'user1@gmail.com', '2020-12-03', 0, 'user1.png', '0325482639', 'male'),
-(3, 'user2', '25d55ad283aa400af464c76d713c07ad', 'user2gmail.com', '2020-12-11', 0, 'user2.png', '0256461116', 'female'),
+(3, 'user2', '25d55ad283aa400af464c76d713c07ad', 'user2@gmail.com', '2020-12-11', 0, 'user2.png', '0256461116', 'female'),
 (4, 'user3', '25d55ad283aa400af464c76d713c07ad', 'user3@gmail.com', '1999-05-19', 0, 'user3.png', '0322652633', 'male'),
-(5, 'user4', '25d55ad283aa400af464c76d713c07ad', 'user4@gmail.com', '2020-12-22', 0, 'user4.png', '0646345469', 'female');
+(5, 'user4', '25d55ad283aa400af464c76d713c07ad', 'user4@gmail.com', '2020-12-22', 0, 'user4.png', '0646345469', 'female'),
+(6, 'admin1', '21232f297a57a5a743894a0e4a801fc3', 'admin1@gmail.com', '2018-08-16', 1, 'unnamed.png', '0905345670', 'none'),
+(7, 'admin2', '21232f297a57a5a743894a0e4a801fc3', 'admin2@gmail.com', '2018-08-16', 1, 'unnamed.png', '0905346884', 'none'),
+(8, 'tai', '25d55ad283aa400af464c76d713c07ad', 'tai@gmail.com', '2020-12-03', 0, 'user1.png', '0156856897', 'male'),
+(9, 'quan', '25d55ad283aa400af464c76d713c07ad', 'quan@gmail.com', '2020-12-11', 0, 'user2.png', '056887663', 'female'),
+(10, 'liem', '25d55ad283aa400af464c76d713c07ad', 'liem@gmail.com', '1999-05-19', 0, 'user3.png', '0322645868', 'male'),
+(11, 'cong', '25d55ad283aa400af464c76d713c07ad', 'cong@gmail.com', '2020-12-22', 0, 'user4.png', '0833156876', 'female');
 
 --
 -- Chỉ mục cho các bảng đã đổ

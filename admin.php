@@ -63,7 +63,7 @@
         </div>
     </div>
     <div class="main_content">
-        <div id="products">
+        <div id="users">
             <div class="sub_title">
                 <h2>Người dùng</h2>
             </div>
@@ -77,21 +77,73 @@
                         <th>Số điện thoại</th>
                         <th>Thao tác</th>
                     </tr>
-                    <tr>
-                        <td>Alfreds Futterkiste</td>
-                        <td>Maria Anders</td>
-                        <td>Germany</td>
-                        <td>Christina Berglund</td>
-                        <td>Sweden</td>
-                        <td style="text-align: center;">
-                            <button class="button_edit" onclick="openModalEditProfile()">Edit</button>
-                        </td>
-                    </tr>
-                </table>
+                    <?php
+                    $user = mysqli_query($db, 'select count(id) as total from user');
+                    $row = mysqli_fetch_assoc($user);
+                    $total_users = $row['total'];
 
+                    $current_page_user = isset($_GET['page_user']) ? $_GET['page_user'] : 1;
+                    $limit_user = 4;
+
+                    $total_page_user = ceil($total_users / $limit_user);
+
+                    // Giới hạn current_page_user trong khoảng 1 đến total_page_user
+                    if ($current_page_user > $total_page_user) {
+                        $current_page_user = $total_page_user;
+                    } else if ($current_page_user < 1) {
+                        $current_page_user = 1;
+                    }
+
+                    // Tìm Start
+                    $start1 = ($current_page_user - 1) * $limit_user;
+                    $sql1 = "SELECT * FROM user ORDER BY id LIMIT " . $limit_user . " OFFSET " . $start1;
+                    $result1 = mysqli_query($db, $sql1);
+                    if ($result1->num_rows > 0) {
+                        while ($row = $result1->fetch_assoc()) {
+                            echo "
+                                <tr>
+                                    <td>" . $row['username'] . "</td>
+                                    <td>" . $row['birthday'] . "</td>
+                                    <td>" . $row['gender'] . "</td>
+                                    <td>" . $row['email'] . "</td>
+                                    <td>" . $row['phone'] . "</td>
+                                    <td style='text-align: center;'>
+                                        <button class='button_edit' onclick='openModalEditProfile()'>Edit</button>
+                                    </td>
+                                </tr>";
+                        }
+                    }
+                    ?>
+                    <tr>
+                        <!-- pagination -->
+                        <?php
+                        // nếu current_page > 1 và total_page > 1 mới hiển thị nút prev
+                        if ($current_page_user > 1 && $total_page_user > 1) {
+                            echo '<a href="admin.php?page_user=' . ($current_page_user - 1) . '">Prev</a> | ';
+                        }
+
+                        // Lặp khoảng giữa
+                        for ($i = 1; $i <= $total_page_user; $i++) {
+                            // Nếu là trang hiện tại thì hiển thị thẻ span
+                            // ngược lại hiển thị thẻ a
+                            if ($i == $current_page_user) {
+                                echo '<span>' . $i . '</span> | ';
+                            } else {
+                                echo '<a href="admin.php?page_user=' . $i . '">' . $i . '</a> | ';
+                            }
+                        }
+                        // nếu current_page < $total_page và total_page > 1 mới hiển thị nút prev
+                        if ($current_page_user < $total_page_user && $total_page_user > 1) {
+                            echo '<a href="admin.php?page_user=' . ($current_page_user + 1) . '">Next</a> | ';
+                        }
+                        ?>
+                    </tr>
+
+
+                </table>
             </div>
         </div>
-        <div id="users">
+        <div id="products">
             <div class="sub_title">
                 <h2>Sản phẩm</h2>
             </div>
@@ -100,23 +152,72 @@
                 <table id="admin">
                     <tr>
                         <th>Tên sản phẩm</th>
-                        <th>Danh mục</th>
-                        <th>Địa chỉ</th>
-                        <th>Mô tả</th>
                         <th>Giá</th>
-                        <th>Người đăng</th>
+                        <th>Loại</th>
+                        <th>Địa chỉ</th>
+                        <th>Nội dung</th>
                         <th>Thao tác</th>
                     </tr>
+                    <?php
+                    $post = mysqli_query($db, 'select count(id) as total from post');
+                    $row1 = mysqli_fetch_assoc($post);
+                    $total_posts = $row1['total'];
+
+                    $current_page_post = isset($_GET['page_post']) ? $_GET['page_post'] : 1;
+                    $limit_post = 4;
+
+                    $total_page_post = ceil($total_posts / $limit_post);
+
+                    // Giới hạn current_page_post trong khoảng 1 đến total_page_post
+                    if ($current_page_post > $total_page_post) {
+                        $current_page_post = $total_page_post;
+                    } else if ($current_page_post < 1) {
+                        $current_page_post = 1;
+                    }
+
+                    // Tìm Start
+                    $start2 = ($current_page_post - 1) * $limit_post;
+                    $sql2 = "SELECT * FROM post ORDER BY id LIMIT " . $limit_post . " OFFSET " . $start2;
+                    $result2 = mysqli_query($db, $sql2);
+                    if ($result2->num_rows > 0) {
+                        while ($row2 = $result2->fetch_assoc()) {
+                            echo "
+                                <tr>
+                                    <td>" . $row2['title'] . "</td>
+                                    <td>" . $row2['cost'] . "</td>
+                                    <td>" . $row2['category'] . "</td>
+                                    <td>" . $row2['address'] . "</td>
+                                    <td>" . $row2['content'] . "</td>
+                                    <td style='text-align: center;'>
+                                        <button class='button_edit' onclick='openModalEditProducts()'>Edit</button>
+                                    </td>
+                                </tr>";
+                        }
+                    }
+                    ?>
                     <tr>
-                        <td>Alfreds Futterkiste</td>
-                        <td>Maria Anders</td>
-                        <td>Germany</td>
-                        <td>Christina Berglund</td>
-                        <td>Sweden</td>
-                        <td>Christina Berglund</td>
-                        <td style="text-align: center;">
-                            <button class="button_edit" onclick="openModalEditProducts()">Edit</button>
-                        </td>
+                        <!-- pagination -->
+                        <?php
+                        // nếu current_page > 1 và total_page > 1 mới hiển thị nút prev
+                        if ($current_page_post > 1 && $total_page_post > 1) {
+                            echo '<a href="admin.php?page_post=' . ($current_page_post - 1) . '">Prev</a> | ';
+                        }
+
+                        // Lặp khoảng giữa
+                        for ($i = 1; $i <= $total_page_post; $i++) {
+                            // Nếu là trang hiện tại thì hiển thị thẻ span
+                            // ngược lại hiển thị thẻ a
+                            if ($i == $current_page_post) {
+                                echo '<span>' . $i . '</span> | ';
+                            } else {
+                                echo '<a href="admin.php?page_post=' . $i . '">' . $i . '</a> | ';
+                            }
+                        }
+                        // nếu current_page < $total_page và total_page > 1 mới hiển thị nút prev
+                        if ($current_page_post < $total_page_post && $total_page_post > 1) {
+                            echo '<a href="admin.php?page_post=' . ($current_page_post + 1) . '">Next</a> | ';
+                        }
+                        ?>
                     </tr>
                 </table>
             </div>

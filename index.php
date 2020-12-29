@@ -1,7 +1,7 @@
 <div style="display: none;">
     <?php
     include('session.php');
-    if (!isset($_SESSION['productPage'])) {
+    if (!isset($_SESSION['productPage'])|| $_SESSION['productPage'] <0) {
         $_SESSION['productPage'] = 1;
     }
     ?>
@@ -87,8 +87,8 @@
                 $row = mysqli_fetch_assoc($result);
                 $total_records = $row['total'];
 
-                $current_page = $_SESSION['productPage'];
-                $limit = 8;
+                $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
+                $limit = 4;
 
                 $total_page = ceil($total_records / $limit);
 
@@ -101,7 +101,6 @@
 
                 // Tìm Start
                 $start = ($current_page - 1) * $limit;
-
 
                 $sql = "SELECT * FROM post ORDER BY id LIMIT " . $limit . " OFFSET " . $start;
                 $result = mysqli_query($db, $sql);
@@ -123,7 +122,7 @@
                 <?php
                 // nếu current_page > 1 và total_page > 1 mới hiển thị nút prev
                 if ($current_page > 1 && $total_page > 1) {
-                    echo "<a  onclick='prePage()'>Prev</a> | ";
+                    echo '<a href="index.php?page='.($current_page-1).'">Prev</a> | ';
                 }
 
                 // Lặp khoảng giữa
@@ -133,13 +132,12 @@
                     if ($i == $current_page) {
                         echo '<span>' . $i . '</span> | ';
                     } else {
-                        echo '<a onclick(changePage(' . $i . '))>' . $i . '</a> | ';
+                        echo '<a href="index.php?page='.$i.'">'.$i.'</a> | ';
                     }
                 }
-
                 // nếu current_page < $total_page và total_page > 1 mới hiển thị nút prev
                 if ($current_page < $total_page && $total_page > 1) {
-                    echo "<a  onclick='nextPage()'>Next</a> ";
+                    echo '<a href="index.php?page='.($current_page+1).'">Next</a> | ';
                 }
                 ?>
             </div>
@@ -463,25 +461,7 @@
             window.location = path;
         }
 
-        function prePage() {
-            <?php
-            $pre  = $_SESSION['productPage'];
-            ?>alert("session pre hien tai: " + <?php echo $_SESSION['productPage'] ?>);
-            <?php
-            $_SESSION['productPage'] = $pre - 1;
-            ?>
-            alert("session pre hien tai: " + <?php echo $_SESSION['productPage'] ?>);
-            window.location.reload();
-        }
-
-        function nextPage() {
-            <?php
-            $next  = $_SESSION['productPage'];
-            $_SESSION['productPage'] = $next + 1;
-            ?>
-            alert("session next hien tai: " + <?php echo $_SESSION['productPage'] ?>);
-            window.location.reload();
-        }
+        
     </script>
 
     <footer style="width: 100%;">

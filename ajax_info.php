@@ -40,7 +40,7 @@
                 <input type='file' id='avatar' name='avatar' placeholder='Avatar'>
                 <div style='display: flex;justify-content: center;'>
                     <input type='submit' value='Lưu'>
-                    <button class='signup-btn'>Xoá</button>
+                    <button class='signup-btn' onclick='deleteUser(".$row['id'].")'>Xoá</button>
                 </div>
             </form>
         </div>

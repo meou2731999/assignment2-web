@@ -1,6 +1,9 @@
 <div style="display: none;">
     <?php
     include('session.php');
+    if($role!=1){
+        header("location: index.php");
+    }
     ?>
 </div>
 <!DOCTYPE html>
@@ -240,7 +243,7 @@
                     <input type="file" id="avatar" name="avatar" placeholder="Avatar">
                     <div style="display: flex;justify-content: center;">
                         <input type="submit" value="Lưu">
-                        <button class="signup-btn">Xoá</button>
+                        <button class="signup-btn" onclick='deleteUser(<?php echo $id; ?>)'>Xoá</button>
                     </div>
                 </form>
             </div>
@@ -387,6 +390,22 @@
             if (event.target == modalAddProducts) {
                 modalAddProducts.style.display = "none";
             }
+        }
+        deleteUser = function(id) {
+            $.ajax({
+                // The link we are accessing.
+                url: "delete.php",
+                    
+                // The type of request.
+                type: "get",
+                    
+                // The type of data that is getting returned.
+                dataType: "html",
+                data : {id : id},
+                success: function( strData ){
+                    window.location.reload();
+                }
+            });
         }
     </script>
 </body>

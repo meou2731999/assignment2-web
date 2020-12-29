@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <?php
     $current_page_user = isset($_GET['page_user']) ? $_GET['page_user'] : 1;
@@ -109,7 +110,7 @@
                                     <td>" . $row['email'] . "</td>
                                     <td>" . $row['phone'] . "</td>
                                     <td style='text-align: center;'>
-                                        <button class='button_edit' onclick='openModalEditProfile()'>Edit</button>
+                                        <button class='button_edit' onclick='openModalEditProfile(".$row['id'].")'>Edit</button>
                                     </td>
                                 </tr>";
                         }
@@ -322,7 +323,21 @@
         var spanEditProfile = document.getElementsByClassName("close")[0];
 
         // When the user clicks the button, open the modalEditProfile 
-        openModalEditProfile = function() {
+        openModalEditProfile = function(id) {
+            $.ajax({
+                // The link we are accessing.
+                url: "ajax_info.php",
+                    
+                // The type of request.
+                type: "get",
+                    
+                // The type of data that is getting returned.
+                dataType: "html",
+                data : {id : id},
+                success: function( strData ){
+                    modalEditProfile.innerHTML = strData;
+                }
+            });
             modalEditProfile.style.display = "block";
             myFunction();
         }

@@ -68,6 +68,7 @@ CREATE TABLE `post` (
 --
 
 INSERT INTO `post` (`id`, `cost`, `category`, `poster`, `content`, `img`, `title`, `address`) VALUES
+(1, 1234567890, 'Villa tiền tỉ', 1, 'villa siêu rộng siêu đẹp, có gái xinh', 'nha1.jpg', 'Ngôi nhà mơ ước', '345-356 Nguyễn Thị Minh Khai, phường 5, quận 3, TP.HCM'),
 (2, 1020000000, 'Villa tiền tỉ', 1, 'villa siêu rộng siêu đẹp, có gái xinh', 'nha1.jpg', 'Ngôi nhà mơ ước', '51 Mậu Thân, Phường 3, Vĩnh Long, Việt Nam'),
 (3, 1020000000, 'Villa tiền tỉ', 1, 'villa siêu rộng siêu đẹp, có gái xinh', 'nha2.jpg', 'Ngôi nhà mơ ước', ''),
 (4, 1020000000, 'Villa tiền tỉ', 1, 'villa siêu rộng siêu đẹp, có gái xinh', 'nha3.jpg', 'Ngôi nhà mơ ước', 'ĐH60, Cẩm Sơn, Cai Lậy, Tiền Giang, Việt Nam'),

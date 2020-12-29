@@ -16,6 +16,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
+<?php
+    $current_page_user = isset($_GET['page_user']) ? $_GET['page_user'] : 1;
+    $current_page_post = isset($_GET['page_post']) ? $_GET['page_post'] : 1;
+?>
 
 <body>
     <div id="navbar">
@@ -81,10 +85,7 @@
                     $user = mysqli_query($db, 'select count(id) as total from user');
                     $row = mysqli_fetch_assoc($user);
                     $total_users = $row['total'];
-
-                    $current_page_user = isset($_GET['page_user']) ? $_GET['page_user'] : 1;
                     $limit_user = 4;
-
                     $total_page_user = ceil($total_users / $limit_user);
 
                     // Giới hạn current_page_user trong khoảng 1 đến total_page_user
@@ -119,7 +120,7 @@
                 <?php
                 // nếu current_page > 1 và total_page > 1 mới hiển thị nút prev
                 if ($current_page_user > 1 && $total_page_user > 1) {
-                    echo '<a href="admin.php?page_user=' . ($current_page_user - 1) . '">Prev</a> | ';
+                    echo '<a href="admin.php?page_user=' . ($current_page_user - 1) . '&page_post=' . $current_page_post . '">Prev</a> | ';
                 }
 
                 // Lặp khoảng giữa
@@ -129,12 +130,12 @@
                     if ($i == $current_page_user) {
                         echo '<span>' . $i . '</span> | ';
                     } else {
-                        echo '<a href="admin.php?page_user=' . $i . '">' . $i . '</a> | ';
+                        echo '<a href="admin.php?page_user=' . $i . '&page_post=' . $current_page_post . '">' . $i . '</a> | ';
                     }
                 }
                 // nếu current_page < $total_page và total_page > 1 mới hiển thị nút prev
                 if ($current_page_user < $total_page_user && $total_page_user > 1) {
-                    echo '<a href="admin.php?page_user=' . ($current_page_user + 1) . '">Next</a> | ';
+                    echo '<a href="admin.php?page_user=' . ($current_page_user + 1) . '&page_post=' . $current_page_post . '">Next</a> | ';
                 }
                 ?>
             </div>
@@ -158,10 +159,7 @@
                     $post = mysqli_query($db, 'select count(id) as total from post');
                     $row1 = mysqli_fetch_assoc($post);
                     $total_posts = $row1['total'];
-
-                    $current_page_post = isset($_GET['page_post']) ? $_GET['page_post'] : 1;
                     $limit_post = 4;
-
                     $total_page_post = ceil($total_posts / $limit_post);
 
                     // Giới hạn current_page_post trong khoảng 1 đến total_page_post
@@ -196,7 +194,7 @@
                 <?php
                 // nếu current_page > 1 và total_page > 1 mới hiển thị nút prev
                 if ($current_page_post > 1 && $total_page_post > 1) {
-                    echo '<a href="admin.php?page_post=' . ($current_page_post - 1) . '">Prev</a> | ';
+                    echo '<a href="admin.php?page_post=' . ($current_page_post - 1) . '&page_user=' . $current_page_user . '">Prev</a> | ';
                 }
 
                 // Lặp khoảng giữa
@@ -206,12 +204,12 @@
                     if ($i == $current_page_post) {
                         echo '<span>' . $i . '</span> | ';
                     } else {
-                        echo '<a href="admin.php?page_post=' . $i . '">' . $i . '</a> | ';
+                        echo '<a href="admin.php?page_post=' . $i . '&page_user=' . $current_page_user . '">' . $i . '</a> | ';
                     }
                 }
                 // nếu current_page < $total_page và total_page > 1 mới hiển thị nút prev
                 if ($current_page_post < $total_page_post && $total_page_post > 1) {
-                    echo '<a href="admin.php?page_post=' . ($current_page_post + 1) . '">Next</a> | ';
+                    echo '<a href="admin.php?page_post=' . ($current_page_post + 1) . '&page_user=' . $current_page_user . '">Next</a> | ';
                 }
                 ?>
             </div>

@@ -1,6 +1,7 @@
 <div style="display: none;">
     <?php
     include('session.php');
+    if(!isset($_SESSION['productPage'])){$_SESSION['productPage'] = 1;}
     ?>
 </div>
 <!DOCTYPE html>
@@ -78,7 +79,30 @@
             </div>
             <div class="projects_content">
                 <?php
-                $sql = "SELECT * FROM post ORDER BY id LIMIT 8 OFFSET 0";
+                // echo "day la session page".$_SESSION['productPage'];
+                
+                $result = mysqli_query($db, 'select count(id) as total from post');
+                $row = mysqli_fetch_assoc($result);
+                $total_records = $row['total'];
+                
+                $current_page = $_SESSION['productPage'];
+                $limit = 8;
+
+                $total_page = ceil($total_records / $limit);
+
+                // Giới hạn current_page trong khoảng 1 đến total_page
+                if ($current_page > $total_page){
+                    $current_page = $total_page;
+                }
+                else if ($current_page < 1){
+                    $current_page = 1;
+                }
+        
+                // Tìm Start
+                $start = ($current_page - 1) * $limit;
+
+
+                $sql = "SELECT * FROM post ORDER BY id LIMIT ".$limit." OFFSET ".$start;
                 $result = mysqli_query($db, $sql);
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
@@ -94,6 +118,30 @@
                     }
                 }
                 ?>
+                <!-- pagination -->
+                <?php 
+            // nếu current_page > 1 và total_page > 1 mới hiển thị nút prev
+            if ($current_page > 1 && $total_page > 1){
+                echo "<a  onclick='prePage()'>Prev</a> | ";
+            }
+ 
+            // Lặp khoảng giữa
+            for ($i = 1; $i <= $total_page; $i++){
+                // Nếu là trang hiện tại thì hiển thị thẻ span
+                // ngược lại hiển thị thẻ a
+                if ($i == $current_page){
+                    echo '<span>'.$i.'</span> | ';
+                }
+                else{
+                    echo '<a onclick(changePage('.$i.'))>'.$i.'</a> | ';
+                }
+            }
+ 
+            // nếu current_page < $total_page và total_page > 1 mới hiển thị nút prev
+            if ($current_page < $total_page && $total_page > 1){
+                echo "<a  onclick='nextPage()'>Next</a> ";
+            }
+           ?>
             </div>
             <div id="about">
                 <div class="sub_title">
@@ -157,6 +205,7 @@
         </div>
 
     </div>
+    <!-- Modal login -->
     <div id="myModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -178,6 +227,7 @@
             </div>
         </div>
     </div>
+    <!-- Modal info -->
     <div id="myModalInfo" class="modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -221,6 +271,7 @@
             </div>
         </div>
     </div>
+    <!-- Modal sign up -->
     <div id="signupModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -250,6 +301,7 @@
             </div>
         </div>
     </div>
+    <!-- Modal edit info -->
     <div id="editProfileModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -261,11 +313,11 @@
             <div class="modal-body">
                 <form action="editprofile.php" method="POST" style="width: 100%;" enctype="multipart/form-data">
                     <input type="hidden" id="id" name="id" value="<?php echo $userid_session; ?>" >
-                    <input type="text" id="username" name="username" placeholder="<?php echo $login_session; ?>" required>
+                    <input type="text" id="username" name="username" value="<?php echo $login_session; ?>" required>
                     <input type="password" id="password" name="password" placeholder="Password" required>
-                    <input type="text" id="email" name="email" placeholder="<?php echo $email; ?>">
+                    <input type="text" id="email" name="email" value="<?php echo $email; ?>">
                     <input type="date" id="birthday" name="birthday" value="<?php echo $birthday; ?>">
-                    <input type="tel" pattern="[0-9]{10}" required id="phone" name="phone" placeholder="<?php echo $phone; ?>">
+                    <input type="tel" pattern="[0-9]{10}" required id="phone" name="phone" value="<?php echo $phone; ?>">
                     <select name="gender" id="gender">
                         <option value="Nam" <?php echo $gender == 'Nam' ? 'selected' : '' ?>>Nam</option>
                         <option value="Nữ" <?php echo $gender == 'Nữ' ? 'selected' : '' ?>>Nữ</option>
@@ -279,7 +331,9 @@
             </div>
         </div>
     </div>
+
     <script>
+        // navbar
         function myFunction() {
             var x = document.getElementById("active_navbar");
             if (x.style.height === "196px") {
@@ -400,6 +454,25 @@
         function viewDetail(id) {
             var path = "product.php?id=" + id.toString();
             window.location = path;
+        }
+
+        function prePage(){
+            <?php
+                $pre  = $_SESSION['productPage'];
+                ?>alert("session pre hien tai: "+<?php echo $_SESSION['productPage']?>);<?php
+                $_SESSION['productPage'] = $pre - 1;
+            ?>
+            alert("session pre hien tai: "+<?php echo $_SESSION['productPage']?>);
+            window.location.reload();
+        }
+
+        function nextPage(){
+            <?php
+                $next  = $_SESSION['productPage'];
+                $_SESSION['productPage'] = $next + 1;
+            ?>
+            alert("session next hien tai: "+<?php echo $_SESSION['productPage']?>);
+            window.location.reload();
         }
     </script>
 

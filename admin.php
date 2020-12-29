@@ -187,7 +187,7 @@
                                     <td>" . $row2['address'] . "</td>
                                     <td>" . $row2['content'] . "</td>
                                     <td style='text-align: center;'>
-                                        <button class='button_edit' onclick='openModalEditProducts()'>Edit</button>
+                                        <button class='button_edit' onclick='openModalEditProducts(".$row2['id'].")'>Edit</button>
                                     </td>
                                 </tr>";
                         }
@@ -283,7 +283,7 @@
                 <h2 style="margin-top: 20px !important;">Tạo mới</h2>
             </div>
             <div class="modal-body">
-                <form action="editproduct.php" method="POST" style="width: 100%;" enctype="multipart/form-data">
+                <form action="addpost.php" method="POST" style="width: 100%;" enctype="multipart/form-data">
                     <input type="text" id="title" name="title" placeholder="Tên sản phẩm" required>
                     <input type="text" id="category" name="category" placeholder="Danh mục sản phẩm">
                     <input type="text" id="address" name="address" placeholder="Địa chỉ">
@@ -357,7 +357,21 @@
         var spanEditProducts = document.getElementsByClassName("close")[1];
 
         // When the user clicks the button, open the modalEditProducts 
-        openModalEditProducts = function() {
+        openModalEditProducts = function(id) {
+            $.ajax({
+                // The link we are accessing.
+                url: "ajax_product.php",
+                    
+                // The type of request.
+                type: "get",
+                    
+                // The type of data that is getting returned.
+                dataType: "html",
+                data : {id : id},
+                success: function( strData ){
+                    modalEditProducts.innerHTML = strData;
+                }
+            });
             modalEditProducts.style.display = "block";
             myFunction();
         }
@@ -395,6 +409,22 @@
             $.ajax({
                 // The link we are accessing.
                 url: "delete.php",
+                    
+                // The type of request.
+                type: "get",
+                    
+                // The type of data that is getting returned.
+                dataType: "html",
+                data : {id : id},
+                success: function( strData ){
+                    window.location.reload();
+                }
+            });
+        }
+        deleteProduct = function(id) {
+            $.ajax({
+                // The link we are accessing.
+                url: "deleteproduct.php",
                     
                 // The type of request.
                 type: "get",

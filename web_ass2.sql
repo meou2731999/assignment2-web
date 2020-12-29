@@ -122,7 +122,7 @@ INSERT INTO `user` (`id`, `username`, `password`, `email`, `birthday`, `role`, `
 (8, 'tai', '25d55ad283aa400af464c76d713c07ad', 'tai@gmail.com', '2020-12-03', 0, 'user1.png', '0156856897', 'male'),
 (9, 'quan', '25d55ad283aa400af464c76d713c07ad', 'quan@gmail.com', '2020-12-11', 0, 'user2.png', '056887663', 'female'),
 (10, 'liem', '25d55ad283aa400af464c76d713c07ad', 'liem@gmail.com', '1999-05-19', 0, 'user3.png', '0322645868', 'male'),
-(11, 'cong', '25d55ad283aa400af464c76d713c07ad', 'cong@gmail.com', '2020-12-22', 0, 'user4.png', '0833156876', 'female'),
+(11, 'cong', '25d55ad283aa400af464c76d713c07ad', 'cong@gmail.com', '2020-12-22', 0, 'user4.png', '0833156876', 'female');
 
 --
 -- Chỉ mục cho các bảng đã đổ
